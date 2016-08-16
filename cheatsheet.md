@@ -13,7 +13,7 @@
   * `ls /sys/firmware/efi/efivars`
 3. Set keyboard layout
   * `ls /usr/share/kbd/keymaps/**/*.map.gz`
-  * `Set the keyboard layout`
+  * `loadkeys de_CH-latin1`
 4. Set console font if certain chars not displayed correctly
   * `setfont lat9w-16`
 5. Connect to internet
@@ -40,7 +40,7 @@
   * Execute `locale-gen`
   * Create `/etc/locale.conf` with `LANG=en_US.UTF-8`
 4. Persist keyboard layout
-  * Create `/etc/vconsole.conf` with `KEYMAP=de-latin1`
+  * Create `/etc/vconsole.conf` with `KEYMAP=de_CH-latin1`
 5. Time
   * Set timezone: `tzselect` or `timedatectl set-timezone *Zone/SubZone*` (for example Europe/Zurich)
   * Create symlink `/etc/localtime` with `ln -s /usr/share/zoneinfo/Zone/SubZone /etc/localtime`
@@ -63,7 +63,9 @@
 2. Unmount device: `umount -R /mnt`
 3. `reboot`
 
-# RaspberryPi
+## Personal Configuration
+
+## RaspberryPi
 1. Partition SD-Card
   * `fdisk /dev/mmcblk0`
   * Type o. This will clear out any partitions on the drive.
@@ -88,14 +90,15 @@
   * `sync`
   * `mv root/boot/* boot`
   * `umount boot root`
-5. Follow the steps 3, 4 5
+5. Follow the steps 3, 4, 5, 7
 
 ## Troubleshooting
 If SD-Card cannot be accessed by fdisk due to input/output error, try overwriting the whole thing with zeros:
 `dd if=/dev/zero of=/dev/mmcblk0 bs=512 count=1`
 
-# Share Laptop WLAN through Ethernet
-## On Laptop
+# Tips & Tricks
+## Share Laptop WLAN through Ethernet
+### On Laptop
 1. Static IP address
   * Activate Interface: `ip link set up enp0s25`
   * Assign arbitrary address: `ip addr add 192.168.123.100/24 dev enp0s25`
@@ -106,7 +109,7 @@ If SD-Card cannot be accessed by fdisk due to input/output error, try overwritin
   * `iptables -t nat -A POSTROUTING -o wlp3s0 -j MASQUERADE`
   * `iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT`
   * `iptables -A FORWARD -i enp0s25 -o wlp3s0 -j ACCEPT`
-## On Client
+### On Client
 1. Assign arbitrary client addresses
   * `ip addr add 192.168.123.201/24 dev eth0` (first three blocks must match with above)
   * `ip link set up dev eth0`
