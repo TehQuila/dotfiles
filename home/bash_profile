@@ -1,0 +1,10 @@
+#
+# ~/.bash_profile
+#
+
+[[ -f ~/.bashrc ]] && . ~/.bashrc
+
+# start X-Server
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+
+export PATH="${PATH}:/bin/fastboot"

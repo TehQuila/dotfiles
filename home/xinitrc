@@ -1,0 +1,38 @@
+# !/bin/sh
+
+userresources=$HOME/.Xresources
+usermodmap=$HOME/.Xmodmap
+sysresources=/etc/X11/xinit/.Xresources
+sysmodmap=/etc/X11/xinit/.Xmodmap
+
+# load system/user xresources
+if [ -f $sysresources ]; then
+   xrdb -merge $sysresources
+fi
+if [ -f "$userresources" ]; then
+   xrdb -merge "$userresources"
+fi
+xrdb -load ~/.Xresources
+
+# enable keybindings (for hardware buttons)
+if [ -f $sysmodmap ]; then
+   xmodmap $sysmodmap
+fi
+if [ -f "$usermodmap" ]; then
+   xmodmap "$usermodmap"
+fi
+xbindkeys &
+
+# start dbus-daemon for automounting removable devices
+if test -z "$DBUS_SESSION_BUS_ADDRESS" ; then
+    eval `dbus-launch --sh-syntax --exit-with-session`
+fi
+
+# set wallpaper
+eval $(cat $HOME/.fehbg)
+
+# execute window manager, make sure automount works
+exec bash -c 'devmon -g & i3'
+
+# when debugging i3 uncomment this line
+# exec i3 -V >> ~/.i3/log 2>&1
