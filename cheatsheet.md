@@ -1,5 +1,5 @@
-# Regular Installation
-## Flash Installation Medium
+# Installing Arch Linux
+## Preparations
 1. Identify USB Stick with `lsblk`
 2. Download Arch Image
 3. Verify Checksum
@@ -16,8 +16,54 @@
   * `Set the keyboard layout`
 4. Set console font if certain chars not displayed correctly
   * `setfont lat9w-16`
+5. Connect to internet
+6. Update system clock
+  * `timedatectl set-ntp true`
+7. Prepare the storage devices _TODO_
+  * Identify the devices with `lsblk`
+  * Partition the devices with `fdisk`
+  * Format the partitions
+    * System partitions: `mkfs.ext4 /dev/sdxy`
+    * Swap partitions: `mkswap /dev/sdxy` and `swapon /dev/sdxy`
+    * UEFI partitions: `mkfs.fat -F32 /dev/sdxy`
+8. Mount Devices
+  * Mount root partition: `mount /dev/sdxy /mnt`
+  * Mount boot partition: `mkdir -p /mnt/boot` and `mount /dev/sdxy /mnt/boot`
+9. Install Base Packages
+  * `pacstrap -i /mnt base base-devel`
 
-# RaspberryPi Installation
+## Configure Installation
+1. Generate `fstab`: `genfstab -U /mnt >> /mnt/etc/fstab`
+2. Chroot into the new system: `arch-chroot /mnt /bin/bash`
+3. Set system language
+  * Uncomment `en_US.UTF-8 UTF-8` in `/etc/locale.gen`
+  * Execute `locale-gen`
+  * Create `/etc/locale.conf` with `LANG=en_US.UTF-8`
+4. Persist keyboard layout
+  * Create `/etc/vconsole.conf` with `KEYMAP=de-latin1`
+5. Time
+  * Set timezone: `tzselect` or `timedatectl set-timezone *Zone/SubZone*` (for example Europe/Zurich)
+  * Create symlink `/etc/localtime` with `ln -s /usr/share/zoneinfo/Zone/SubZone /etc/localtime`
+  * Adjust time skew: `hwclock --systohc --utc`
+6. Bootloader
+  * `pacman -S grub`
+  * `grub-install --target=i386-pc /dev/sdx`
+  * `grub-mkconfig -o /boot/grub/grub.cfg`
+  * When Intel CPU, install `intel-ucode`
+7. Network
+  * `echo myhostname > /etc/hostname`
+  * Append myhostname to `/etc/hosts`
+  * Enable Eth: `systemctl enable dhcpcd@enp0s25.service`
+  * Install wifi packages: `pacman -S iw wpa_supplicant dialog`
+8. Set root password
+  * `passwd`
+
+## Finishing up
+1. Exit chroot: `exit`
+2. Unmount device: `umount -R /mnt`
+3. `reboot`
+
+# RaspberryPi
 1. Partition SD-Card
   * `fdisk /dev/mmcblk0`
   * Type o. This will clear out any partitions on the drive.
@@ -42,6 +88,7 @@
   * `sync`
   * `mv root/boot/* boot`
   * `umount boot root`
+5. Follow the steps 3, 4 5
 
 ## Troubleshooting
 If SD-Card cannot be accessed by fdisk due to input/output error, try overwriting the whole thing with zeros:
