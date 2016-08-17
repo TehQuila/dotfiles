@@ -2,23 +2,16 @@
 ## Preparations
 1. Identify USB Stick with `lsblk`
 2. Download Arch Image
-3. Verify Checksum
-  * `gpg --keyserver-options auto-key-retrieve --verify archlinux-<version>-dual.iso.sig`
-4. Flash image onto USB Stick
-  * `dd bs=4M if=/path/to/archlinux.iso of=/dev/sdx status=progress && sync`
+3. Verify Checksum: `gpg --keyserver-options auto-key-retrieve --verify archlinux-<version>-dual.iso.sig`
+4. Flash image onto USB Stick: `dd bs=4M if=/path/to/archlinux.iso of=/dev/sdx status=progress && sync`
 
 ## Installation
 1. Boot Image
-2. When using UEFI Motherboard check if booted in UEFI Mode
-  * `ls /sys/firmware/efi/efivars`
-3. Set keyboard layout
-  * `ls /usr/share/kbd/keymaps/**/*.map.gz`
-  * `loadkeys de_CH-latin1`
-4. Set console font if certain chars not displayed correctly
-  * `setfont lat9w-16`
+2. When using UEFI Motherboard check if booted in UEFI Mode: `ls /sys/firmware/efi/efivars`
+3. Set keyboard layout: `loadkeys de_CH-latin1`
+4. Set console font if certain chars not displayed correctly: `setfont lat9w-16`
 5. Connect to internet
-6. Update system clock
-  * `timedatectl set-ntp true`
+6. Update system clock: `timedatectl set-ntp true`
 7. Prepare the storage devices _TODO_
   * Identify the devices with `lsblk`
   * Partition the devices with `fdisk`
@@ -29,8 +22,7 @@
 8. Mount Devices
   * Mount root partition: `mount /dev/sdxy /mnt`
   * Mount boot partition: `mkdir -p /mnt/boot` and `mount /dev/sdxy /mnt/boot`
-9. Install Base Packages
-  * `pacstrap -i /mnt base base-devel`
+9. Install Base Packages: `pacstrap -i /mnt base base-devel`
 
 ## Configure Installation
 1. Generate `fstab`: `genfstab -U /mnt >> /mnt/etc/fstab`
@@ -45,7 +37,7 @@
   * Set timezone: `tzselect` or `timedatectl set-timezone *Zone/SubZone*` (for example Europe/Zurich)
   * Create symlink `/etc/localtime` with `ln -s /usr/share/zoneinfo/Zone/SubZone /etc/localtime`
   * Adjust time skew: `hwclock --systohc --utc`
-6. Bootloader
+6. Install Bootloader (GRUB)
   * `pacman -S grub`
   * `grub-install --target=i386-pc /dev/sdx`
   * `grub-mkconfig -o /boot/grub/grub.cfg`
@@ -64,6 +56,7 @@
 3. `reboot`
 
 ## Personal Configuration
+_TODO_
 
 ## RaspberryPi
 1. Partition SD-Card
@@ -85,6 +78,7 @@
 4. Flash root filesystem and move boot files to the first partition
   * `su`
   * `wget http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-latest.tar.gz`
+  * `wget http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-latest.tar.gz.md5`
   * `md5sum -c ArchLinuxARM-rpi-latest.tar.gz.md5`
   * `bsdtar -xpf ArchLinuxARM-rpi-latest.tar.gz -C root`
   * `sync`
