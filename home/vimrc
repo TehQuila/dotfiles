@@ -30,20 +30,30 @@ set expandtab
 set shiftwidth=3
 set tabstop=3
 
-" Colors
-let base16colorspace=256
+" Access colors present in 256 colorspace
 syntax on
 set background=dark
+let base16colorspace=256
 colorscheme base16-default
 
 " Display tabs
 set list
 set listchars=tab:•\ ,trail:•,extends:»,precedes:«
 
+" Enable pathogen autoload
+execute pathogen#infect()
+
 " Airline Config
 set laststatus=2
 set t_Co=256
 let g:airline#extensions#tabline#enabled = 1
 
-" Execute pathogen
-execute pathogen#infect()
+" Syntastic Config
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
