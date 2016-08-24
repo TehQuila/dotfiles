@@ -1,50 +1,61 @@
 #!/usr/bin/bash
 
-echo "User Name: "
-read USER_NAME
+# with pacman -S $(file) can all the files be installed
+# execute root stuff: su -c "echo hello"
 
-echo "Setting up laptop? (y/n)"
-read LAPTOP_SETUP
+echo "Setting up laptop? [y/n]"
+read LAPTOP
 
-cp ./home/gitconfig /home/$USER_NAME/.gitconfig
+echo "X11 Setup..."
+su -c "pacman -S xorg-xinit xorg-server xorg-xrandr xorg-xmodmap xbindkeys"
+xmodmap -pke > ~/.Xmodmap # generate keycodes
+cp ./home/xbindkeysrc $HOME/.xbindkeysrc.scm # bind keycodes
 
-cp -r ./home/config /home/$USER_NAME/.config
-cp -r ./home/i3 /home/$USER_NAME/.i3
-cp -r ./home/irssi /home/$USER_NAME/.irssi
-cp -r ./home/vim /home/$USER_NAME/.vim
-
-if [[ $LAPTOP_SETUP == "y" ]]; then
-   cp ./home/xbindkeysrc.scm /home/$USER_NAME/.xbindkeysrc.scm
-   cp ./home/Xmodmap /home/$USER_NAME/.Xmodmap
-   cp -r ./etc/X11/xorg.conf.d /etc/X11/xorg.conf.d
-else
-   cp ./etc/X11/xorg.conf.d/10-evdev.conf /etc/X11/xorg.conf.d/10-evdev.conf
+if [[ "$LAPTOP" == "y" ]]; then
+   cp -r ./etc/X11/xorg.conf.d /etc/X11/xorg.conf.d # setup evdev, trackball, trackpad
 fi
 
-#
-# Setup GUI
-#
-# with pacman -S $(file) can all the files be installed
-# setup X11
-pacman -S  xorg-xinit xorg-server xorg-xrandr i3 dmenu feh alsa-utils ttf-dejavu
+# TODO query available monitors and generate xorg.conf
+echo "...done!"
+
+echo "Bash Setup..."
+su -c "pacman -S xterm xorg-xrdb xinit bash-completion"
+cp ./home/bash_profile $HOME/.bash_profile
+cp ./home/xinitrc $HOME/.xinitrc
+cp ./home/Xresources $HOME/.Xresources
+cp ./home/bashrc $HOME/.bashrc
+load xrdb ~/.Xressources
+
+
+mkdir -r $HOME/.config
+cp -r ./home/config/base16-shell $HOME/.config
+echo "...done!"
+
+echo "GUI Setup..."
+su -c "pacman -S i3 dmenu feh alsa-utils ttf-dejavu"
+cp -r ./home/i3 $HOME/.i3
+cp -r ./home/fehbg $HOME/.fehbg
+
+
+
+
+cp ./home/gitconfig $HOME/.gitconfig
+
+
+
 
 #
 # Setup Bash
 #
-xterm xorg-xrdb xinit bash-completion
-cp ./home/bash_profile /home/$USER_NAME/.bash_profile
-cp ./home/xinitrc /home/$USER_NAME/.xinitrc
-cp ./home/Xresources /home/$USER_NAME/.Xresources
-cp ./home/bashrc /home/$USER_NAME/.bashrc
-load xrdb ~/.Xressources
-
-#
-# yaourt setup
-#
+echo "Setup Yaourt..."
 git clone https://aur.archlinux.org/package-query.git /tmp/package-query
-git clone https://aur.archlinux.org/yaourt.git
+git clone https://aur.archlinux.org/yaourt.git /tmp/yaourt
 (cd /tmp/package-query && exec makepkg -si)
 (cd /tmp/yaourt && exec makepkg -si)
+echo "...done!"
+
+# Install AUR packages
+yaourt -S folingathome
 
 
 #
@@ -56,20 +67,17 @@ pacman -S git curl
 #
 # MISC
 #
-pacman -S unzip unrar keepass chromium vlc scrot sudo
+pacman -S unzip unrar keepass chromium vlc scrot ntfs-3g udisks2 udevil xclip
 
-#
-# utils
-#
-pacman -S ntfs-3g udisks2 udevil sudo openssh
 
-# setup xbindkeys (for laptop hardware buttons)
 
 
 #
 # VIM setup
 #
 pacman -S vim
+
+cp -r ./home/vim /home/$USER_NAME/.vim
 
 mkdir -p ~/.vim/autoload ~/.vim/bundle
 
