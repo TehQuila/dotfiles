@@ -5,25 +5,29 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
-# load system/user xresources
-if [ -f $sysresources ]; then
-   xrdb -merge $sysresources
+# load system keybindings and xterm config as fallback
+if [ -f "$sysresources" ]; then
+   xrdb -merge "$sysresources"
 fi
+if [ -f "$sysmodmap" ]; then
+   xmodmap "$sysmodmap"
+fi
+
+# load user keybindings and xterm config
 if [ -f "$userresources" ]; then
    xrdb -merge "$userresources"
-fi
-xrdb -load ~/.Xresources
-
-# enable keybindings (for hardware buttons)
-if [ -f $sysmodmap ]; then
-   xmodmap $sysmodmap
 fi
 if [ -f "$usermodmap" ]; then
    xmodmap "$usermodmap"
 fi
-xbindkeys &
 
-# start dbus-daemon for automounting removable devices
+# load configured xterm
+xrdb -load $HOME/.Xresources
+
+# enable custom keybindings configured in ~/.xbindkeysrc
+xbindkeys
+
+# start dbus-daemon to automount removable devices
 if test -z "$DBUS_SESSION_BUS_ADDRESS" ; then
     eval `dbus-launch --sh-syntax --exit-with-session`
 fi
