@@ -57,6 +57,21 @@
 
 ## Personal Configuration
 _TODO_
+Install and configure sudo
+
+setup latex
+install utility packages
+
+Setup DevEnv
+Install vim, git, python, venv, ruby, rvn, Phusion Passenger 5, nginx
+
+Setup package management
+Configure Pacman, Setup Yaourt
+
+Setup GUI
+Setup X11, i3, fehbg, hardware keys
+
+Setup Bash
 
 ## RaspberryPi
 1. Partition SD-Card
