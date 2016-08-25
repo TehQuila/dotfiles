@@ -56,8 +56,6 @@
 3. `reboot`
 
 ## Personal Configuration
-_TODO_
-Install and configure sudo
 
 setup latex
 install utility packages
@@ -67,11 +65,6 @@ Install vim, git, python, venv, ruby, rvn, Phusion Passenger 5, nginx
 
 Setup package management
 Configure Pacman, Setup Yaourt
-
-Setup GUI
-Setup X11, i3, fehbg, hardware keys
-
-Setup Bash
 
 ## RaspberryPi
 1. Partition SD-Card
@@ -123,3 +116,15 @@ If SD-Card cannot be accessed by fdisk due to input/output error, try overwritin
   * `ip addr add 192.168.123.201/24 dev eth0` (first three blocks must match with above)
   * `ip link set up dev eth0`
   * `ip route add default via 192.168.123.100 dev eth0` (address must match laptops enp0s25)
+
+## Latex Installation
+_TODO_
+install packages
+texlive-core
+texlive-bin
+texlive-bibtexextra
+texlive-latexextra
+biber
+xelatex?
+
+
