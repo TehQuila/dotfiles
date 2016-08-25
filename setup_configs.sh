@@ -28,7 +28,7 @@ cp ./home/bash_profile $HOME/.bash_profile
 cp ./home/xinitrc $HOME/.xinitrc
 cp ./home/Xresources $HOME/.Xresources
 cp ./home/bashrc $HOME/.bashrc
-load xrdb ~/.Xressources
+cp ./home/toprc $HOME/.toprc
 
 mkdir -r $HOME/.config
 cp -r ./home/config/base16-shell $HOME/.config
