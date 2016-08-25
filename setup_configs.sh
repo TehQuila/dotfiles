@@ -1,11 +1,13 @@
 #!/usr/bin/bash
 
 # with pacman -S $(file) can all the files be installed
+# TODO maybe add sudo
 
 echo "Setting up laptop? [y/n]"
 read LAPTOP
 
 echo "Prepare Setup..."
+cp ./etc/pacman.conf /etc
 su -c "pacman -S git curl"
 cp ./home/gitconfig $HOME/.gitconfig
 echo "...done!"
@@ -15,7 +17,7 @@ su -c "pacman -S xorg-xinit xorg-server xorg-xrandr xorg-xmodmap xbindkeys"
 xmodmap -pke > ~/.Xmodmap # generate keycodes
 cp ./home/xbindkeysrc $HOME/.xbindkeysrc.scm # bind keycodes
 
-if [[ "$LAPTOP" == "y" ]]; then
+if [[ "$LAPTOP" -eq "y" ]]; then
    cp -r ./etc/X11/xorg.conf.d /etc/X11/xorg.conf.d # setup evdev, trackball, trackpad
 fi
 
@@ -71,3 +73,5 @@ git clone git://github.com/chriskempson/base16-vim.git $HOME/.vim/colors
 
 vim -u NONE -c "helptags vim-fugitive/doc" -c "helptags vim-airline/doc" -c "helptags vim-airline-themes/doc" -c "helptags ctrlp.vim/doc" -c q
 echo "...done!"
+
+# TODO implement dev setup
