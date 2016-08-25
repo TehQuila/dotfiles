@@ -56,15 +56,9 @@
 3. `reboot`
 
 ## Personal Configuration
-
-setup latex
-install utility packages
-
+_TODO_
 Setup DevEnv
-Install vim, git, python, venv, ruby, rvn, Phusion Passenger 5, nginx
-
-Setup package management
-Configure Pacman, Setup Yaourt
+Install python, venv, ruby, rvm, Passenger 5, nginx
 
 ## RaspberryPi
 1. Partition SD-Card
