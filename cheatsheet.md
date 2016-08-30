@@ -120,5 +120,3 @@ texlive-bibtexextra
 texlive-latexextra
 biber
 xelatex?
-
-
