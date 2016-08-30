@@ -94,6 +94,13 @@ sudo pacman -S texlive-core texlive-bin texlive-bibtexextra texlive-latexextra b
 # TODO implement dev setup
 echo "RVM Setup..."
 curl -sSL https://get.rvm.io | bash -s stable --ruby
+USER_NAME=$(id -u -n)
+sudo usermod -a -G rvm $USER_NAME
+sudo usermod -a -G rvm http
 source $HOME/.bash_login
+source $HOME/.bashrc
+rvm requirements
+echo "...done!"
 
+echo "RoR Setup..."
 echo "...done!"

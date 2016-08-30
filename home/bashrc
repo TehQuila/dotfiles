@@ -7,14 +7,15 @@ export PATH="${PATH}:/bin/fastboot"
 BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
-# Add RVM to PATH for scripting
-export PATH="$PATH:$HOME/.rvm/bin"
-
 # Load RVM into a shell session *as a function*
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+if [[ -s "/usr/local/rvm/scripts/rvm" ]]; then
+   source "/usr/local/rvm/scripts/rvm"
+fi
 
 # RVM bash completion
-[[ -r /usr/local/rvm/scripts/completion ]] && . /usr/local/rvm/scripts/completion
+if [[ -r /usr/local/rvm/scripts/completion ]]; then
+   . /usr/local/rvm/scripts/completion
+fi
 
 # Display the current RVM ruby selection
 PS1="\$(/usr/local/rvm/bin/rvm-prompt) $PS1"
