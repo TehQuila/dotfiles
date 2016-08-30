@@ -11,7 +11,13 @@ BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
 export PATH="$PATH:$HOME/.rvm/bin"
 
 # Load RVM into a shell session *as a function*
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+# RVM bash completion
+[[ -r /usr/local/rvm/scripts/completion ]] && . /usr/local/rvm/scripts/completion
+
+# Display the current RVM ruby selection
+PS1="\$(/usr/local/rvm/bin/rvm-prompt) $PS1"
 
 # enable sudo tab completion
 complete -cf sudo
@@ -22,6 +28,7 @@ alias v='xclip -o'
 
 export EDITOR='vim'
 
+# enable vim mode on cl
 set -o vi
 
 PS1='[\u@\h \W]\$ '
