@@ -23,6 +23,7 @@ PS1="\$(/usr/local/rvm/bin/rvm-prompt) $PS1"
 complete -cf sudo
 
 alias ls='ls --color=auto'
+alias grep='grep --color=auto'
 alias c='xclip'
 alias v='xclip -o'
 
