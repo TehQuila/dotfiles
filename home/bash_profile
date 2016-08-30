@@ -1,3 +1,1 @@
-export PATH="${PATH}:/bin/fastboot"
-
 [[ -f ~/.bashrc ]] && . ~/.bashrc
