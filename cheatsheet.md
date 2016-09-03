@@ -93,6 +93,17 @@ If SD-Card cannot be accessed by fdisk due to input/output error, try overwritin
 `dd if=/dev/zero of=/dev/mmcblk0 bs=512 count=1`
 
 # Tips & Tricks
+_TODO_
+## Bluetooth
+1. systemctl start bluetooth.service
+2. bluetoothctl
+3. Turn the power to the controller on by entering `power on`.
+4. Enter `devices` to get the MAC Address of the device with which to pair.
+5. Enter device discovery mode with `scan on` command if device is not yet on the list.
+6. Turn the agent on with `agent on`.
+7. Enter `pair <mac>` to do the pairing (tab completion works).
+8. If using a device without a PIN, one may need to manually trust the device before it can reconnect successfully. Enter `trust <mac>` to do so.
+9. Finally, use `connect <mac>` to establish a connection.
 ## Share Laptop WLAN through Ethernet
 ### On Laptop
 1. Static IP address
