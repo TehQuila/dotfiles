@@ -16,6 +16,7 @@ sudo pacman -Syu
 # setup utils needed for installation
 sudo pacman -S git curl
 cp ./home/gitconfig $HOME/.gitconfig
+cp ./home/curlrc $HOME/.curlrc
 echo "...done!"
 
 echo "X11 Setup..."
@@ -55,6 +56,11 @@ echo "Installing utilities..."
 sudo pacman -S unzip unrar keepass chromium vlc scrot ntfs-3g udisks2 udevil xclip
 echo "...done!"
 
+echo "Setting up Bluetooth..."
+sudo pacman -S modprobe btusb
+modprobe btusb
+echo "...done!"
+
 echo "Setup Yaourt..."
 git clone https://aur.archlinux.org/package-query.git /tmp/package-query
 git clone https://aur.archlinux.org/yaourt.git /tmp/yaourt
@@ -89,18 +95,20 @@ echo "...done!"
 
 echo "LaTex Setup..."
 sudo pacman -S texlive-core texlive-bin texlive-bibtexextra texlive-latexextra biber xelatex
-
-
-# TODO implement dev setup
-echo "RVM Setup..."
-curl -sSL https://get.rvm.io | bash -s stable --ruby
-USER_NAME=$(id -u -n)
-sudo usermod -a -G rvm $USER_NAME
-sudo usermod -a -G rvm http
-source $HOME/.bash_login
-source $HOME/.bashrc
-rvm requirements
 echo "...done!"
 
+
 echo "RoR Setup..."
+gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+curl -sSL https://get.rvm.io | sudo bash -s stable
+sudo usermod -a -G rvm `id -u -n`
+if sudo grep -q secure_path /etc/sudoers; then
+   sudo sh -c "echo export rvmsudo_secure_path=1 >> /etc/profile.d/rvm_secure_path.sh"
+   echo "Environment variable installed"
+fi
+cp ./home/rvmrc $HOME/.rvmrc
+source /etc/profile.d/rvm.sh
+rvm install ruby
+rvm --default use ruby
+sudo pacman -S nodejs
 echo "...done!"
