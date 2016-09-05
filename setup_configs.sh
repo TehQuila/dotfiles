@@ -42,6 +42,7 @@ cp ./home/bash_login $HOME/.bash_login
 cp ./home/bash_logout $HOME/.bash_logout
 cp ./home/toprc $HOME/.toprc
 
+# TODO setup through git pull
 mkdir -r $HOME/.config
 cp -r ./home/config/base16-shell $HOME/.config
 echo "...done!"
@@ -75,6 +76,7 @@ fi
 
 echo "VIM Setup..."
 sudo pacman -S vim
+cp ./home/vimrc $HOME/.vimrc
 
 # install vim package manager
 mkdir -p $HOME/.vim/autoload
