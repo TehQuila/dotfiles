@@ -10,19 +10,32 @@
 2. When using UEFI Motherboard check if booted in UEFI Mode: `ls /sys/firmware/efi/efivars`
 3. Set keyboard layout: `loadkeys de_CH-latin1`
 4. Set console font if certain chars not displayed correctly: `setfont lat9w-16`
-5. Connect to internet
+5. Connect to internet: `ip link set enp0s3 up`
 6. Update system clock: `timedatectl set-ntp true`
-7. Prepare the storage devices _TODO_
+7. Prepare the storage devices
   * Identify the devices with `lsblk`
-  * Partition the devices with `fdisk`
-  * Format the partitions
-    * System partitions: `mkfs.ext4 /dev/sdxy`
-    * Swap partitions: `mkswap /dev/sdxy` and `swapon /dev/sdxy`
-    * UEFI partitions: `mkfs.fat -F32 /dev/sdxy`
+  * Partition the devices with `fdisk /dev/sdx`
+  * If you install onto an EFI System choose GPT.
+    1. Press g for new GPT partition table
+    2. Press p to ensure that no partitions are present.
+    3. Create boot partition
+      * press n, p, ENTER, ENTER, +100M
+      * press t, 1 to choose EFI partition type
+  * If you install onto an BIOS System choose MBR.
+    1. Press o for new MBR partition table.
+    2. Press p to ensure that no partitions are present.
+    3. Create boot partition
+      * press n, p, ENTER, ENTER, +100M
+      * leave whatever partition type is chosen
+  * Create all other partitions to liking (Swap, home, system)
+  * Format partitions:
+    1. System partitions: `mkfs.ext4 /dev/sdxy`
+    2. Swap partitions: `mkswap /dev/sdxy` and `swapon /dev/sdxy`
+    3. UEFI partitions: `mkfs.fat -F32 /dev/sdxy`
 8. Mount Devices
   * Mount root partition: `mount /dev/sdxy /mnt`
   * Mount boot partition: `mkdir -p /mnt/boot` and `mount /dev/sdxy /mnt/boot`
-9. Install Base Packages: `pacstrap -i /mnt base base-devel`
+9. Install Base and Base Devel Packages: `pacstrap -i /mnt base base-devel`
 
 ## Configure Installation
 1. Generate `fstab`: `genfstab -U /mnt >> /mnt/etc/fstab`
@@ -40,13 +53,13 @@
 6. Install Bootloader (GRUB)
   * `pacman -S grub`
   * `grub-install --target=i386-pc /dev/sdx`
+  * If using Intel CPU, install `intel-ucode`
   * `grub-mkconfig -o /boot/grub/grub.cfg`
-  * When Intel CPU, install `intel-ucode`
 7. Network
   * `echo myhostname > /etc/hostname`
   * Append myhostname to `/etc/hosts`
   * Enable Eth: `systemctl enable dhcpcd@enp0s25.service`
-  * Install wifi packages: `pacman -S iw wpa_supplicant dialog`
+  * Install wifi packages if needed: `pacman -S iw wpa_supplicant dialog`
 8. Set root password
   * `passwd`
 
@@ -54,11 +67,6 @@
 1. Exit chroot: `exit`
 2. Unmount device: `umount -R /mnt`
 3. `reboot`
-
-## Personal Configuration
-_TODO_
-Setup DevEnv
-Install python, venv, ruby, rvm, Passenger 5, nginx
 
 ## RaspberryPi
 1. Partition SD-Card
@@ -93,7 +101,10 @@ If SD-Card cannot be accessed by fdisk due to input/output error, try overwritin
 `dd if=/dev/zero of=/dev/mmcblk0 bs=512 count=1`
 
 # Tips & Tricks
-_TODO_
+## Setup Rails Project
+1. Create Gemset: `rvm gemset create <name>`
+2. Use Gemset: `rvm use 2.3.0@uml_backend`
+3. Install bundle and rails: `gem install bundle rails --no-ri --no-rdoc
 ## Bluetooth
 1. systemctl start bluetooth.service
 2. bluetoothctl
