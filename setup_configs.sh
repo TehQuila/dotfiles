@@ -94,9 +94,8 @@ git clone git://github.com/chriskempson/base16-vim.git $HOME/.vim/colors
 echo "...done!"
 
 echo "LaTex Setup..."
-sudo pacman -S texlive-core texlive-bin texlive-bibtexextra texlive-latexextra biber xelatex
+sudo pacman -S texlive-core texlive-bin texlive-bibtexextra texlive-latexextra biber
 echo "...done!"
-
 
 echo "RoR Setup..."
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
