@@ -40,9 +40,7 @@ cp ./home/bash_login $HOME/.bash_login
 cp ./home/bash_logout $HOME/.bash_logout
 cp ./home/toprc $HOME/.toprc
 
-# TODO setup through git pull
-mkdir -r $HOME/.config
-cp -r ./home/config/base16-shell $HOME/.config
+git clone git://github.com/chriskempson/base16-shell.git $HOME/.config/base16-shell
 echo "...done!"
 
 echo "GUI Setup..."

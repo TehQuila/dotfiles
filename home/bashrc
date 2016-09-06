@@ -5,7 +5,7 @@ export EDITOR='vim'
 export PATH="${PATH}:/bin/fastboot"
 export PATH="${PATH}:/usr/local/rvm/bin"
 
-BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
+BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-default.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 [[ -s "/etc/profile.d/rvm.sh" ]] && source "/etc/profile.d/rvm.sh"
@@ -16,7 +16,6 @@ complete -cf sudo
 alias ls='ls --color=auto'
 alias c='xclip'
 alias v='xclip -o'
-
 
 set -o vi
 
