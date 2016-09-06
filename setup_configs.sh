@@ -38,8 +38,6 @@ cp ./home/bash_profile $HOME/.bash_profile
 cp ./home/xinitrc $HOME/.xinitrc
 cp ./home/Xresources $HOME/.Xresources
 cp ./home/bashrc $HOME/.bashrc
-cp ./home/bash_login $HOME/.bash_login
-cp ./home/bash_logout $HOME/.bash_logout
 cp ./home/toprc $HOME/.toprc
 
 git clone git://github.com/chriskempson/base16-shell.git $HOME/.config/base16-shell
