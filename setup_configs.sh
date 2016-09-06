@@ -4,12 +4,10 @@
 echo "Setting up laptop? [y/n]"
 read LAPTOP
 
-echo "Prepare Setup..."
-# setup sudo
+echo "Preparing Setup..."
 su -c "pacman -S sudo"
 su -c "visudo"
 
-# setup pacman
 sudo cp ./etc/pacman.conf /etc
 sudo pacman -Syu
 
