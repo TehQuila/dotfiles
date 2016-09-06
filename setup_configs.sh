@@ -9,6 +9,8 @@ su -c "pacman -S sudo"
 su -c "visudo"
 
 sudo cp ./etc/pacman.conf /etc
+sudo pacman-key --init
+sudo pacman-key --populate archlinux
 sudo pacman -Syu
 
 # setup utils needed for installation
