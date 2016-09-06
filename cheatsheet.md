@@ -68,6 +68,13 @@
 2. Unmount device: `umount -R /mnt`
 3. `reboot`
 
+## Post Installation
+1. Setup Screens
+1. Create Non-Root User: `useradd -m -G wheel -s /bin/bash <username>`
+2. Set Password of new user: `passwd <username>`
+3. Make workspace directory, clone & run setup script
+
+
 ## RaspberryPi
 1. Partition SD-Card
   * `fdisk /dev/mmcblk0`
