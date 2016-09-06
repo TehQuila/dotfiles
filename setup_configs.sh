@@ -26,7 +26,7 @@ if [[ "$LAPTOP" -eq "y" ]]; then
    sudo pacman -S xorg-xmodmap xbindkeys
    xmodmap -pke > ~/.Xmodmap # generate keycodes
    cp ./home/xbindkeysrc $HOME/.xbindkeysrc # bind keycodes
-   sudo cp -r ./etc/X11/xorg.conf.d /etc/X11/xorg.conf.d # setup evdev, trackball, trackpad
+   sudo cp ./etc/X11/xorg.conf.d/* /etc/X11/xorg.conf.d
 fi
 
 # TODO query available monitors and generate xorg.conf
