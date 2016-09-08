@@ -1,11 +1,41 @@
 # Installing Arch Linux
-## Preparations
-1. Identify USB Stick with `lsblk`
-2. Download Arch Image
-3. Verify Checksum: `gpg --keyserver-options auto-key-retrieve --verify archlinux-<version>-dual.iso.sig`
+
+## RaspberryPi
+1. Partition SD-Card
+  * `fdisk /dev/mmcblk0`
+  * Type o. This will clear out any partitions on the drive.
+  * Type p to list partitions. There should be no partitions left.
+  * Type n, then p for primary, 1 for the first partition on the drive, press ENTER to accept the default first sector, then type +100M for the last sector.
+  * Type t, then c to set the first partition to type W95 FAT32 (LBA).
+  * Type n, then p for primary, 2 for the second partition on the drive, and then press ENTER twice to accept the default first and last sector.
+  * Write the partition table and exit by typing w.
+2. Create the boot partition
+  * `mkfs.vfat /dev/mmcblk0p1`
+  * `mkdir boot`
+  * `mount /dev/mmcblk0p1 boot`
+3. Create root filesystem
+  * `mkfs.ext4 /dev/mmcblk0p2`
+  * `mkdir root`
+  * `mount /dev/mmcblk0p2 root`
+4. Flash root filesystem and move boot files to the first partition
+  * `su`
+  * `wget http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-latest.tar.gz`
+  * `wget http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-latest.tar.gz.md5`
+  * `md5sum -c ArchLinuxARM-rpi-latest.tar.gz.md5`
+  * `bsdtar -xpf ArchLinuxARM-rpi-latest.tar.gz -C root`
+  * `sync`
+  * `mv root/boot/* boot`
+  * `umount boot root`
+5. Configure Installation
+
+## PC
+### Preparations
+1. Download Arch Image
+2. Verify Checksum: `gpg --keyserver-options auto-key-retrieve --verify archlinux-<version>-dual.iso.sig`
+3. Identify USB Stick with `lsblk`
 4. Flash image onto USB Stick: `dd bs=4M if=/path/to/archlinux.iso of=/dev/sdx status=progress && sync`
 
-## Installation
+### Installation
 1. Boot Image
 2. When using UEFI Motherboard check if booted in UEFI Mode: `ls /sys/firmware/efi/efivars`
 3. Set keyboard layout: `loadkeys de_CH-latin1`
@@ -34,7 +64,7 @@
     3. UEFI partitions: `mkfs.fat -F32 /dev/sdxy`
 8. Mount Devices
   * Mount root partition: `mount /dev/sdxy /mnt`
-  * Mount boot partition: `mkdir -p /mnt/boot` and `mount /dev/sdxy /mnt/boot`
+  * Mount boot partition: `mkdir -p /mnt/boot && mount /dev/sdxy /mnt/boot`
 9. Install Base and Base Devel Packages: `pacstrap -i /mnt base base-devel`
 
 ## Configure Installation
@@ -47,8 +77,8 @@
 4. Persist keyboard layout
   * Create `/etc/vconsole.conf` with `KEYMAP=de_CH-latin1`
 5. Time
-  * Set timezone: `tzselect` or `timedatectl set-timezone *Zone/SubZone*` (for example Europe/Zurich)
-  * Create symlink `/etc/localtime` with `ln -s /usr/share/zoneinfo/Zone/SubZone /etc/localtime`
+  * Set timezone: `tzselect` or `timedatectl set-timezone <Zone/SubZone>` (for example Europe/Zurich)
+  * Create symlink `/etc/localtime` with `ln -s /usr/share/zoneinfo/<Zone/SubZone> /etc/localtime`
   * Adjust time skew: `hwclock --systohc --utc`
 6. Install Bootloader (GRUB)
   * `pacman -S grub`
@@ -56,10 +86,10 @@
   * If using Intel CPU, install `intel-ucode`
   * `grub-mkconfig -o /boot/grub/grub.cfg`
 7. Network
-  * `echo myhostname > /etc/hostname`
-  * Append myhostname to `/etc/hosts`
+  * `echo <hostname> > /etc/hostname`
+  * Append hostname to `/etc/hosts`
   * Enable Eth: `systemctl enable dhcpcd@enp0s25.service`
-  * Install wifi packages if needed: `pacman -S iw wpa_supplicant dialog`
+  * Install wifi if needed: `pacman -S iw wpa_supplicant dialog`
 8. Set root password
   * `passwd`
 
@@ -74,44 +104,17 @@
 2. Set Password of new user: `passwd <username>`
 3. Make workspace directory, clone & run setup script
 
+# Tips & Tricks
 
-## RaspberryPi
-1. Partition SD-Card
-  * `fdisk /dev/mmcblk0`
-  * Type o. This will clear out any partitions on the drive.
-  * Type p to list partitions. There should be no partitions left.
-  * Type n, then p for primary, 1 for the first partition on the drive, press ENTER to accept the default first sector, then type +100M for the last sector.
-  * Type t, then c to set the first partition to type W95 FAT32 (LBA).
-  * Type n, then p for primary, 2 for the second partition on the drive, and then press ENTER twice to accept the default first and last sector.
-  * Write the partition table and exit by typing w.
-2. Create the boot partition
-  * `mkfs.vfat /dev/mmcblk0p1`
-  * `mkdir boot`
-  * `mount /dev/mmcblk0p1 boot`
-3. Create root filesystem
-  * `mkfs.ext4 /dev/mmcblk0p2`
-  * `mkdir root`
-  * `mount /dev/mmcblk0p2 root`
-4. Flash root filesystem and move boot files to the first partition
-  * `su`
-  * `wget http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-latest.tar.gz`
-  * `wget http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-latest.tar.gz.md5`
-  * `md5sum -c ArchLinuxARM-rpi-latest.tar.gz.md5`
-  * `bsdtar -xpf ArchLinuxARM-rpi-latest.tar.gz -C root`
-  * `sync`
-  * `mv root/boot/* boot`
-  * `umount boot root`
-5. Follow the steps 3, 4, 5, 7
-
-## Troubleshooting
+## input/output error on SD-Card
 If SD-Card cannot be accessed by fdisk due to input/output error, try overwriting the whole thing with zeros:
 `dd if=/dev/zero of=/dev/mmcblk0 bs=512 count=1`
 
-# Tips & Tricks
 ## Setup Rails Project
 1. Create Gemset: `rvm gemset create <name>`
 2. Use Gemset: `rvm use 2.3.0@uml_backend`
 3. Install bundle and rails: `gem install bundle rails --no-ri --no-rdoc
+
 ## Bluetooth
 1. systemctl start bluetooth.service
 2. bluetoothctl
@@ -122,7 +125,9 @@ If SD-Card cannot be accessed by fdisk due to input/output error, try overwritin
 7. Enter `pair <mac>` to do the pairing (tab completion works).
 8. If using a device without a PIN, one may need to manually trust the device before it can reconnect successfully. Enter `trust <mac>` to do so.
 9. Finally, use `connect <mac>` to establish a connection.
+
 ## Share Laptop WLAN through Ethernet
+
 ### On Laptop
 1. Static IP address
   * Activate Interface: `ip link set up enp0s25`
@@ -134,6 +139,7 @@ If SD-Card cannot be accessed by fdisk due to input/output error, try overwritin
   * `iptables -t nat -A POSTROUTING -o wlp3s0 -j MASQUERADE`
   * `iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT`
   * `iptables -A FORWARD -i enp0s25 -o wlp3s0 -j ACCEPT`
+
 ### On Client
 1. Assign arbitrary client addresses
   * `ip addr add 192.168.123.201/24 dev eth0` (first three blocks must match with above)
