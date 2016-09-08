@@ -39,7 +39,11 @@ cp ./home/Xresources $HOME/.Xresources
 cp ./home/bashrc $HOME/.bashrc
 cp ./home/toprc $HOME/.toprc
 
-git clone git://github.com/chriskempson/base16-shell.git $HOME/.config/base16-shell
+if [[ ! -d "$DIRECTORY" ]]; then
+   mkdir $HOME/.config
+fi
+
+git clone git://github.com/chriskempson/base16-shell.git $HOME/.config
 echo "...done!"
 
 echo "GUI Setup..."
