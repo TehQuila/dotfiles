@@ -13,7 +13,7 @@ sudo pacman-key --populate archlinux
 sudo pacman -Syu --noconfirm --needed
 
 # setup utils needed for installation
-sudo pacman -S git curl
+sudo pacman -S curl
 cp ./home/gitconfig $HOME/.gitconfig
 cp ./home/curlrc $HOME/.curlrc
 echo "...done!"
@@ -98,7 +98,7 @@ echo "LaTex Setup..."
 sudo pacman -S texlive-core texlive-bin texlive-bibtexextra texlive-latexextra biber --noconfirm
 echo "...done!"
 
-echo "RoR Setup..."
+echo "RVM Setup..."
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 curl -sSL https://get.rvm.io | sudo bash -s stable
 sudo usermod -a -G rvm `id -u -n`
