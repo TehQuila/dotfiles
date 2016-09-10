@@ -33,3 +33,4 @@ texlive-bibtexextra
 texlive-latexextra
 biber
 nodejs
+openssh

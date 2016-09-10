@@ -51,7 +51,7 @@ cp -r ./home/fehbg $HOME/.fehbg
 echo "...done!"
 
 echo "Installing utilities..."
-sudo pacman -S unzip unrar keepass chromium vlc scrot ntfs-3g udisks2 udevil xclip --noconfirm
+sudo pacman -S openssh unzip unrar keepass chromium vlc scrot ntfs-3g udisks2 udevil xclip --noconfirm
 echo "...done!"
 
 echo "Setting up Bluetooth..."
