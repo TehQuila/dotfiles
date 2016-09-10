@@ -1,69 +1,65 @@
-! CopyPaste not only to PRIMARY but also to CLIPBOARD memory
-!XTerm*VT100.translations: #override <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0)
-*selectToClipboard: true
+XTerm*termName: xterm-256color
+XTerm*selectToClipboard: true
+XTerm*SaveLines: 4096
+XTerm*VT100.cursorBlink: true
 
-*SaveLines: 4096
+! colored manpages
+XTerm*VT100.colorBDMode: true
+XTerm*VT100.colorBD: base08
+XTerm*VT100.colorULMode: true
+XTerm*VT100.colorUL: base0B
+XTerm*VT100.veryBoldColors: 6
 
-! Font
 *faceName: faceName: DejaVu Sans Mono
-! Use the right kind of antialiasing
-Xft.rgba: rgb
 *faceSize: 10
 
-*termName: xterm-256color
-
+! Base16 Default Dark
+! Scheme: Chris Kempson (http://chriskempson.com)
 #define base00 #181818
 #define base01 #282828
+#define base02 #383838
 #define base03 #585858
 #define base04 #b8b8b8
 #define base05 #d8d8d8
 #define base06 #e8e8e8
+#define base07 #f8f8f8
+#define base08 #ab4642
 #define base09 #dc9656
 #define base0A #f7ca88
+#define base0B #a1b56c
+#define base0C #86c1b9
 #define base0D #7cafc2
+#define base0E #ba8baf
 #define base0F #a16946
 
-! Colors: 0-7 = Dark, 8-15 = Light
-! black
-*color0:      base00
-*color8:      base03
-! red
-*color1:      base08
-*color9:      base08
-! green
-*color2:      base0B
-*color10:     base0B
-! yellow
-*color3:      base0A
-*color11:     base0A
-! blue
-*color4:      base0D
-*color12:     base0D
-! magenta
-*color5:      base0E
-*color13:     base0E
-! cyan
-*color6:      base0C
-*color14:     base0C
-! white
-*color7:      base05
-*color15:     base07
+*.foreground:   base05
+*.background:   base00
+*.cursorColor:  base05
 
-*.color16:    base09
-*.color17:    base0F
-*.color18:    base01
-*.color19:    base02
-*.color20:    base04
-*.color21:    base06
+*.color0:       base00
+*.color1:       base08
+*.color2:       base0B
+*.color3:       base0A
+*.color4:       base0D
+*.color5:       base0E
+*.color6:       base0C
+*.color7:       base05
 
-*foreground:  base07
-*background:  base00
-*cursorColor: #00ff00
-*cursorBlink: true
+*.color8:       base03
+*.color9:       base08
+*.color10:      base0B
+*.color11:      base0A
+*.color12:      base0D
+*.color13:      base0E
+*.color14:      base0C
+*.color15:      base07
 
-! colored manpages
-*VT100.colorBDMode: true
-*VT100.colorBD: base08
-*VT100.colorULMode: true
-*VT100.colorUL: base0B
-*VT100.veryBoldColors: 6
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! use 'shell' template to set these if necessary
+*.color16:      base09
+*.color17:      base0F
+*.color18:      base01
+*.color19:      base02
+*.color20:      base04
+*.color21:      base06
+
