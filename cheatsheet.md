@@ -103,8 +103,9 @@
 2. Create Non-Root User: `useradd -m -G wheel -s /bin/bash <username>`
 3. Set Password of new user: `passwd <username>`
 4. Enable group `wheel` to use `sudo`: `visudo`
-5. Install git: `sudo pacman -S git`
-6. Make workspace directory, clone & run setup script
+5. Relogin as new user.
+6. Install git: `sudo pacman -S git`
+7. `mkdir $HOME/workspace && git clone https://github.com/TehQuila/dotfiles.git && cd $HOME/workspace/dotfiles && ./setup
 
 # Tips & Tricks
 
