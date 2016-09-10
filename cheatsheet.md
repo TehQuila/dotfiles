@@ -109,6 +109,10 @@
 
 # Tips & Tricks
 
+## VIM Controls
+Find first occurance in line: f+<symbol>
+Change in between symbol: c+i+<symbol>
+
 ## input/output error on SD-Card
 If SD-Card cannot be accessed by fdisk due to input/output error, try overwriting the whole thing with zeros:
 `dd if=/dev/zero of=/dev/mmcblk0 bs=512 count=1`
