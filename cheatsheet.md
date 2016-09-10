@@ -100,9 +100,11 @@
 
 ## Post Installation
 1. Setup Screens
-1. Create Non-Root User: `useradd -m -G wheel -s /bin/bash <username>`
-2. Set Password of new user: `passwd <username>`
-3. Make workspace directory, clone & run setup script
+2. Create Non-Root User: `useradd -m -G wheel -s /bin/bash <username>`
+3. Set Password of new user: `passwd <username>`
+4. Enable group `wheel` to use `sudo`: `visudo`
+5. Install git: `sudo pacman -S git`
+6. Make workspace directory, clone & run setup script
 
 # Tips & Tricks
 
