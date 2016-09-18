@@ -25,13 +25,14 @@ if [[ "$LAPTOP" -eq "y" ]]; then
 fi
 
 # TODO query available monitors and generate xorg.conf
+# TODO query hardware for video drivers
 echo "...done!"
 
 echo "Bash Setup..."
 sudo pacman -S xterm xorg-xrdb xinit bash-completion --noconfirm
 cp ./home/bash_profile $HOME/.bash_profile
 cp ./home/xinitrc $HOME/.xinitrc
-cp ./home/Xresources $HOME/.Xresources
+cp ./home/Xresources $HOME/.Xresources # TODO read resource
 cp ./home/bashrc $HOME/.bashrc
 cp ./home/toprc $HOME/.toprc
 
@@ -39,7 +40,7 @@ if [[ ! -d "$DIRECTORY" ]]; then
    mkdir $HOME/.config
 fi
 
-git clone git://github.com/chriskempson/base16-shell.git $HOME/.config
+git clone git://github.com/chriskempson/base16-shell.git $HOME/.config/base16-shell
 echo "...done!"
 
 echo "GUI Setup..."
@@ -76,14 +77,14 @@ mkdir -p $HOME/.vim/autoload
 curl -LSso ~/.vim/autoload/pathogen.vim https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
 mkdir -p $HOME/.vim/bundle
-git clone git://github.com/tpope/vim-fugitive.git $HOME/.vim/bundle/vim-fugitive
 git clone git://github.com/vim-airline/vim-airline $HOME/.vim/bundle/vim-airline
 git clone git://github.com/vim-airline/vim-airline-themes $HOME/.vim/bundle/vim-airline-themes
 git clone git://github.com/ctrlpvim/ctrlp.vim.git $HOME/.vim/bundle/ctrlp.vim
-vim -u NONE -c "helptags vim-fugitive/doc" -c "helptags vim-airline/doc" -c "helptags vim-airline-themes/doc" -c "helptags ctrlp.vim/doc" -c q
+vim -u NONE -c "helptags vim-airline/doc" -c "helptags vim-airline-themes/doc" -c "helptags ctrlp.vim/doc" -c q
 
 mkdir -p $HOME/.vim/colors
-git clone git://github.com/chriskempson/base16-vim.git $HOME/.vim/colors
+git clone git://github.com/chriskempson/base16-vim.git /tmp # FIXME
+mv /tmp/base16-vim/colors/* $HOME/.vim/colors
 echo "...done!"
 
 echo "LaTex Setup..."
@@ -103,6 +104,4 @@ source /etc/profile.d/rvm.sh
 
 rvm install ruby
 rvm --default use ruby
-
-sudo pacman -S nodejs --noconfirm
 echo "...done!"
