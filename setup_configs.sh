@@ -41,6 +41,7 @@ if [[ ! -d "$DIRECTORY" ]]; then
 fi
 
 git clone git://github.com/chriskempson/base16-shell.git $HOME/.config/base16-shell
+base16_default_dark
 echo "...done!"
 
 echo "GUI Setup..."
@@ -83,7 +84,7 @@ git clone git://github.com/ctrlpvim/ctrlp.vim.git $HOME/.vim/bundle/ctrlp.vim
 vim -u NONE -c "helptags vim-airline/doc" -c "helptags vim-airline-themes/doc" -c "helptags ctrlp.vim/doc" -c q
 
 mkdir -p $HOME/.vim/colors
-git clone git://github.com/chriskempson/base16-vim.git /tmp # FIXME
+git clone git://github.com/chriskempson/base16-vim.git /tmp
 mv /tmp/base16-vim/colors/* $HOME/.vim/colors
 echo "...done!"
 
