@@ -16,7 +16,9 @@ sudo pacman -Syu --noconfirm --needed
 echo "...done!"
 
 # TODO query available monitors and generate xorg.conf
-echo "X11 Setup..."
+
+echo "Graphic Stack Setup..."
+sudo pacman -S xorg-xrandr --noconfirm
 
 controller=$(lspci | grep VGA)
 if [[ "$(echo $controller | grep Intel -c)" ]]; then
@@ -27,7 +29,15 @@ elif [[ "$(echo $controller | grep Nvidia -c)" ]]; then
    sudo pacman -S xf86-video-nouveau --noconfirm
 fi
 
-sudo pacman -S xterm xorg-xrdb xorg-xinit xorg-server xorg-xrandr --noconfirm
+while read -r line; do
+   if [[ $line =~ ([A-Z]+[1-9])[[:space:]]connected ]]; then
+      echo ${BASH_REMATCH[1]};
+   fi
+done < <(xrandr)
+echo "..done!"
+
+echo "X11 Setup..."
+sudo pacman -S xterm xorg-xrdb xorg-xinit xorg-server  --noconfirm
 
 cp ./home/xinitrc $HOME/.xinitrc
 cp ./home/Xresources $HOME/.Xresources
