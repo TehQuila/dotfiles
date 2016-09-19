@@ -15,9 +15,18 @@ sudo pacman-key --populate archlinux
 sudo pacman -Syu --noconfirm --needed
 echo "...done!"
 
-# TODO install apropriate video driver
 # TODO query available monitors and generate xorg.conf
 echo "X11 Setup..."
+
+controller=$(lspci | grep VGA)
+if [[ "$(echo $controller | grep Intel -c)" ]]; then
+   sudo pacman -S xf86-video-intel --noconfirm
+elif [[ "$(echo $controller | grep ATI -c)" ]]; then
+   sudo pacman -S xf86-video-ati --noconfirm
+elif [[ "$(echo $controller | grep Nvidia -c)" ]]; then
+   sudo pacman -S xf86-video-nouveau --noconfirm
+fi
+
 sudo pacman -S xterm xorg-xrdb xorg-xinit xorg-server xorg-xrandr --noconfirm
 
 cp ./home/xinitrc $HOME/.xinitrc
