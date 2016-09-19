@@ -1,6 +1,7 @@
 #!/usr/bin/bash
+# TODO setup printing
 
-# TODO setup laptop specific stuff
+# TODO think about different optional software
 echo "Setting up laptop? [y/n]"
 read LAPTOP
 
@@ -14,8 +15,13 @@ sudo pacman-key --populate archlinux
 sudo pacman -Syu --noconfirm --needed
 echo "...done!"
 
+# TODO install apropriate video driver
+# TODO query available monitors and generate xorg.conf
 echo "X11 Setup..."
-sudo pacman -S xorg-xinit xorg-server xorg-xrandr --noconfirm
+sudo pacman -S xterm xorg-xrdb xorg-xinit xorg-server xorg-xrandr --noconfirm
+
+cp ./home/xinitrc $HOME/.xinitrc
+cp ./home/Xresources $HOME/.Xresources
 
 if [[ "$LAPTOP" -eq "y" ]]; then
    sudo pacman -S xorg-xmodmap xbindkeys --noconfirm
@@ -24,15 +30,11 @@ if [[ "$LAPTOP" -eq "y" ]]; then
    sudo cp ./etc/X11/xorg.conf.d/* /etc/X11/xorg.conf.d
 fi
 
-# TODO query available monitors and generate xorg.conf
-# TODO query hardware for video drivers
 echo "...done!"
 
 echo "Bash Setup..."
-sudo pacman -S xterm xorg-xrdb xinit bash-completion --noconfirm
+sudo pacman -S bash-completion --noconfirm
 cp ./home/bash_profile $HOME/.bash_profile
-cp ./home/xinitrc $HOME/.xinitrc
-cp ./home/Xresources $HOME/.Xresources # TODO read resource
 cp ./home/bashrc $HOME/.bashrc
 cp ./home/toprc $HOME/.toprc
 
@@ -95,13 +97,7 @@ echo "...done!"
 echo "RVM Setup..."
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 curl -sSL https://get.rvm.io | sudo bash -s stable
-sudo usermod -a -G rvm `id -u -n`
-if [sudo grep -q secure_path /etc/sudoers]; then
-   sudo sh -c "echo export rvmsudo_secure_path=1 >> /etc/profile.d/rvm_secure_path.sh"
-   echo "Environment variable installed"
-fi
 cp ./home/rvmrc $HOME/.rvmrc
-source /etc/profile.d/rvm.sh
 
 rvm install ruby
 rvm --default use ruby
