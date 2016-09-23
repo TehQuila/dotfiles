@@ -1,9 +1,6 @@
 #!/usr/bin/bash
-# TODO setup printing
 
 # TODO think about different optional software
-echo "Setting up laptop? [y/n]"
-read LAPTOP
 
 cp ./home/gitconfig $HOME/.gitconfig
 cp ./home/curlrc $HOME/.curlrc
@@ -13,9 +10,7 @@ sudo pacman-key --init
 sudo pacman-key --populate archlinux
 sudo pacman -Syu --noconfirm --needed
 
-# TODO query available monitors and generate xorg.conf
-
-controller=$(lspci | grep VGA)
+controller=$(lspci | grep -i vga)
 if [[ "$(echo $controller | grep Intel -c)" ]]; then
    sudo pacman -S xf86-video-intel --noconfirm
 elif [[ "$(echo $controller | grep ATI -c)" ]]; then
@@ -24,14 +19,43 @@ elif [[ "$(echo $controller | grep Nvidia -c)" ]]; then
    sudo pacman -S xf86-video-nouveau --noconfirm
 fi
 
+# TODO refine screen setup (setup Device/Screen section, identify place of monitor right/leftof)
 sudo pacman -S xorg-xrandr --noconfirm
+x_config="/etc/X11/xorg.conf.d/20-monitors.conf"
+screens=()
+
+while read -r line; do
+   if [[ $line =~ ([A-Z]+[1-9])[[:space:]]connected ]]; then
+      screens+=("${BASH_REMATCH[1]}")
+   fi
+done < <(xrandr)
+
+echo "Choose primary screen: "
+for i in ${!screens[@]}; do
+   echo "($i) ${screens[i]}"
+done
+read primary
+
+for i in ${!screens[@]}; do
+   echo "Section \"Monitor\"" | sudo tee --append $x_config
+   echo "   Identifier \"${screens[i]}\"" | sudo tee --append $x_config
+   if [[ $i -eq $primary ]]; then
+      echo "   Option \"Primary\" \"true\"" | sudo tee --append $x_config
+   else
+      echo "Option \"RightOf\" \"${screens[primary]}\"" | sudo tee --append $x_config
+   fi
+   echo "EndSection" | sudo tee --append $x_config
+   echo "" | sudo tee --append $x_config
+done
 
 sudo pacman -S xterm xorg-xrdb xorg-xinit xorg-server  --noconfirm
 
 cp ./home/xinitrc $HOME/.xinitrc
 cp ./home/Xresources $HOME/.Xresources
 
-if [[ "$LAPTOP" -eq "y" ]]; then
+echo "Setting up laptop? [y/n]"
+read laptop
+if [[ "$laptop" -eq "y" ]]; then
    sudo pacman -S xorg-xmodmap xbindkeys --noconfirm
    xmodmap -pke > ~/.Xmodmap # generate keycodes
    cp ./home/xbindkeysrc $HOME/.xbindkeysrc # bind keycodes
@@ -43,7 +67,7 @@ cp ./home/bash_profile $HOME/.bash_profile
 cp ./home/bashrc $HOME/.bashrc
 cp ./home/toprc $HOME/.toprc
 
-if [[ ! -d "$DIRECTORY" ]]; then
+if [[ ! -d "$HOME/.config" ]]; then
    mkdir $HOME/.config
 fi
 
@@ -54,9 +78,8 @@ sudo pacman -S i3 dmenu feh alsa-utils ttf-dejavu --noconfirm
 cp -r ./home/i3 $HOME/.i3
 cp -r ./home/fehbg $HOME/.fehbg
 
-sudo pacman -S openssh unzip unrar keepass chromium vlc scrot ntfs-3g udisks2 udevil xclip --noconfirm
+sudo pacman -S openssh unzip unrar keepass chromium vlc scrot ntfs-3g udisks2 udevil --noconfirm
 
-# do i really need that?
 sudo pacman -S modprobe btusb --noconfirm
 modprobe btusb
 
@@ -65,7 +88,7 @@ git clone https://aur.archlinux.org/yaourt.git /tmp/yaourt
 (cd /tmp/package-query && exec makepkg -si)
 (cd /tmp/yaourt && exec makepkg -si)
 
-if [[ "$LAPTOP" -eq "n" ]]; then
+if [[ "$laptop" -eq "n" ]]; then
    yaourt -S folingathome
 fi
 
@@ -86,6 +109,7 @@ git clone git://github.com/chriskempson/base16-vim.git /tmp
 mv /tmp/base16-vim/colors/* $HOME/.vim/colors
 
 sudo pacman -S texlive-core texlive-bin texlive-bibtexextra texlive-latexextra biber --noconfirm
+# TODO Setup printing
 
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 curl -sSL https://get.rvm.io | sudo bash -s stable
