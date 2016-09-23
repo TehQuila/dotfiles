@@ -91,7 +91,7 @@ git clone https://aur.archlinux.org/yaourt.git /tmp/yaourt
 (cd /tmp/yaourt && exec makepkg -si)
 
 if [[ "$laptop" -eq "n" ]]; then
-   yaourt -S folingathome
+   yaourt -S foldingathome
 fi
 
 sudo pacman -S vim --noconfirm
