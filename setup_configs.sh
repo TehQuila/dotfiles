@@ -17,6 +17,8 @@ elif [[ "$(echo $controller | grep ATI -c)" ]]; then
    sudo pacman -S xf86-video-ati --noconfirm
 elif [[ "$(echo $controller | grep Nvidia -c)" ]]; then
    sudo pacman -S xf86-video-nouveau --noconfirm
+else
+   sudo pacman -S xf86-video-fbdev --noconfirm
 fi
 
 # TODO refine screen setup (setup Device/Screen section, identify place of monitor right/leftof)
@@ -115,5 +117,6 @@ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB8
 curl -sSL https://get.rvm.io | sudo bash -s stable
 cp ./home/rvmrc $HOME/.rvmrc
 
+source $HOME/.bashrc
 rvm install ruby
 rvm --default use ruby
