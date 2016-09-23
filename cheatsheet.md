@@ -99,13 +99,13 @@
 3. `reboot`
 
 ## Post Installation
-1. Setup Screens
-2. Create Non-Root User: `useradd -m -G wheel -s /bin/bash <username>`
-3. Set Password of new user: `passwd <username>`
-4. Enable group `wheel` to use `sudo`: `visudo`
-5. Relogin as new user.
-6. Install git: `sudo pacman -S git`
-7. `mkdir $HOME/workspace && git clone https://github.com/TehQuila/dotfiles.git && cd $HOME/workspace/dotfiles && ./setup
+1. Create Non-Root User: `useradd -m -G wheel -s /bin/bash <username>`
+2. Set Password of new user: `passwd <username>`
+3. Enable group `wheel` to use `sudo`: `visudo`
+4. Relogin as new user.
+5. Install git: `sudo pacman -S git`
+6. `mkdir $HOME/workspace`
+7. `git clone https://github.com/TehQuila/dotfiles.git`
 
 # Tips & Tricks
 ##Get Hardware Information
