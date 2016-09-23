@@ -111,7 +111,24 @@ git clone git://github.com/chriskempson/base16-vim.git /tmp
 mv /tmp/base16-vim/colors/* $HOME/.vim/colors
 
 sudo pacman -S texlive-core texlive-bin texlive-bibtexextra texlive-latexextra biber --noconfirm
-# TODO Setup printing
+
+# TODO implement printer setup
+# sudo pacman -S cups avahi nss-mdns
+# systemctl enable avahi-daemon.service
+# systemctl enable org.cups.cupsd.service
+# systemctl start avahi-daemon.service
+# systemctl start org.cups.cupsd.service
+# 
+# sudo lpinfo -v
+# echo "Enter Printer name: "
+# read queue_name
+# echo "Paste Printer URI: "
+# read uri
+# 
+# sudo lpadmin -p $queue_name -E -v "$uri"
+# sudo lpoptions -d $queue_name
+# sudo cupsenable $queue_name
+# sudo cupsaccept $queue_name
 
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 curl -sSL https://get.rvm.io | sudo bash -s stable

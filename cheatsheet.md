@@ -110,6 +110,17 @@
 9. `rvm --default use ruby`
 
 # Tips & Tricks
+## CUPS
+lpr <file> print a file
+lpq check the queue
+lprm remove last entry only
+lprm remove all entries
+
+### Remove a Printer
+cupsreject queue_name
+cupsdisable queue_nameA
+lpadmin -x queue_name
+
 ##Get Hardware Information
 lscpu - CPU Info
 /proc files, hwinfo, lshw - General HW Info
