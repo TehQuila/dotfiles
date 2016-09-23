@@ -116,7 +116,3 @@ sudo pacman -S texlive-core texlive-bin texlive-bibtexextra texlive-latexextra b
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 curl -sSL https://get.rvm.io | sudo bash -s stable
 cp ./home/rvmrc $HOME/.rvmrc
-
-source $HOME/.bashrc
-rvm install ruby
-rvm --default use ruby

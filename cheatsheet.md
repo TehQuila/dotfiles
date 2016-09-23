@@ -106,6 +106,8 @@
 5. Install git: `sudo pacman -S git`
 6. `mkdir $HOME/workspace`
 7. `git clone https://github.com/TehQuila/dotfiles.git`
+8. `rvm install ruby`
+9. `rvm --default use ruby`
 
 # Tips & Tricks
 ##Get Hardware Information
