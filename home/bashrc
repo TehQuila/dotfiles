@@ -15,8 +15,7 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 complete -cf sudo
 
 alias ls='ls --color=auto'
-alias c='xclip'
-alias v='xclip -o'
+alias grep='grep --color'
 
 set -o vi
 
