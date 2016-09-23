@@ -108,10 +108,21 @@
 7. `mkdir $HOME/workspace && git clone https://github.com/TehQuila/dotfiles.git && cd $HOME/workspace/dotfiles && ./setup
 
 # Tips & Tricks
+##Get Hardware Information
+lscpu - CPU Info
+/proc files, hwinfo, lshw - General HW Info
+lspci - PCI buses and connected devices info
+lsusb - USB buses and connected device info
+lsblk - HDD, optical drives info
+df - diskspace
+fdisk - partition info
+mount - mounted filesystems
+free - RAM Info
 
 ## VIM Controls
-Find first occurance in line: f+<symbol>
-Change in between symbol: c+i+<symbol>
+Find first right occurance in line: f+<symbol>
+Find first left occurance in line: F+<symbol>
+Change in between symbol: c+i/c/v+<symbol>
 
 ## input/output error on SD-Card
 If SD-Card cannot be accessed by fdisk due to input/output error, try overwriting the whole thing with zeros:
