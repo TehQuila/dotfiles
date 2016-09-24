@@ -109,6 +109,131 @@
 8. `rvm install ruby`
 9. `rvm --default use ruby`
 
+# Server Hardening
+## Three principles
+1. Minimal Attack Surface: Disable everything you don't need.
+2. Secure everything that must be exposed
+3. Assume that every measure will be defeated
+
+## Minimize Attack surface
+- Display all running processes (without kernel): ps -ef | grep -v \] | wc -l
+- Display all open Ports: lsof -ni | grep LISTEN
+- Disable everything you don't need
+
+## Setup Firewall with iptables
+make sure forwarding is off and clear everything
+also turn off ipv6 cause if you don't need it turn it off
+`sysctl net.ipv6.conf.all.disable_ipv6=1`
+`sysctl net.ipv4.ip_forward=0`
+`iptables -F`
+`iptables --flush`
+`iptables -t nat --flush`
+`iptables -t mangle --flush`
+`iptables --delete-chain`
+`iptables -t nat --delete-chain`
+`iptables -t mangle --delete-chain`
+
+make the default -drop everything
+`iptables --policy INPUT DROP`
+`iptables --policy OUTPUT ACCEPT`
+`iptables --policy FORWARD DROP`
+
+allow all in loopback
+`iptables -A INPUT -i lo -j ACCEPT`
+
+allow related
+`iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT`
+
+allow ssh
+`iptables -A INPUT -m tcp -p tcp --dport 22 -j ACCEPT`
+
+## Setup Scheduled Updates
+With cronjob or smth.
+
+## Disable remote root login
+In `/etc/ssh/sshd_config`
+set `PermitRootLogin no`
+
+## Disable over all root login (root only accessible via sudo)
+`sudo passwd -l root`
+
+## Only grant remote access to users which need it
+In `/etc/ssh/sshd_config`
+set `AllowUsers` or `AllowGroups`
+
+## Enable passkey
+generate passkey
+`ssh-keygen -t rsa`
+and store public bit in `~/.ssh/authorized_keys` on the server
+
+## disable password authentication
+In `/etc/ssh/sshd_config`
+Set `PasswordAuthentication no`
+
+## Only enable secure encryption
+In `/etc/ssh/sshd_config`
+Set `Ciphers aes128-ctr,aes192-ctr,aes256-ctr,arcfour256,arcfour128`
+And `MACs hmac-sha1,umac-64@openssh.com,hmac-ripemd160`
+
+## Disable SElinux
+In `/etc/selinux/config`
+comment out `#SELINUX=enforcing`
+turn it of `fSELINUX=disabled`
+restart the system
+
+## Enable automated blocklist
+```shell
+#!/bin/bash
+
+PATH=$PATH:/sbin
+WD=`pwd`
+TMP_DIR=$WD/tmp
+IP_TMP=$TMP_DIR/ip.temp
+IP_BLOCKLIST=$WD/ip-blocklist.conf
+IP_BLOCKLIST_TMP=$TMP_DIR/ip-blocklist.temp
+list="chinese nigerian russian lacnic exploited-servers"
+BLOCKLISTS=(
+"http://www.projecthoneypot.org/list_of_ips.php?t=d&rss=1" # Project Honey Pot Directory of Dictionary Attacker IPs
+"http://check.torproject.org/cgi-bin/TorBulkExitList.py?ip=1.1.1.1" # TOR Exit Nodes
+"http://www.maxmind.com/en/anonymous_proxies" # MaxMind GeoIP Anonymous Proxies
+"http://danger.rulez.sk/projects/bruteforceblocker/blist.php" # BruteForceBlocker IP List
+"http://rules.emergingthreats.net/blockrules/rbn-ips.txt" # Emerging Threats - Russian Business Networks List
+"http://www.spamhaus.org/drop/drop.lasso" # Spamhaus Dont Route Or Peer List (DROP)
+"http://cinsscore.com/list/ci-badguys.txt" # C.I. Army Malicious IP List
+"http://www.openbl.org/lists/base.txt"  # OpenBLOCK.org 30 day List
+"http://www.autoshun.org/files/shunlist.csv" # Autoshun Shun List
+"http://lists.blocklist.de/lists/all.txt" # blocklist.de attackers
+)
+
+mkdir $TMP_DIR
+cd  $TMP_DIR
+# This gets the various lists
+for i in "${BLOCKLISTS[@]}"; do
+   curl "$i" > $IP_TMP
+   grep -Po '(?:\d{1,3}\.){3}\d{1,3}(?:/\d{1,2})?' $IP_TMP >> $IP_BLOCKLIST_TMP
+done
+
+for i in `echo $list`; do
+   wget --quiet http://www.wizcrafts.net/$i-iptables-blocklist.html # This section gets wizcrafts lists
+   cat $i-iptables-blocklist.html | grep -v \< | grep -v \: | grep -v \; | grep -v \# | grep [0-9] > $i.txt # Grep out all but ip blocks
+   cat $i.txt >> $IP_BLOCKLIST_TMP # Consolidate blocks into master list
+done
+
+sort $IP_BLOCKLIST_TMP -n | uniq > $IP_BLOCKLIST
+rm $IP_BLOCKLIST_TMP
+wc -l $IP_BLOCKLIST
+
+ipset flush blocklist
+egrep -v "^#|^$" $IP_BLOCKLIST | while IFS= read -r ip; do
+   ipset add blocklist $ip
+done
+
+#cleanup
+rm -fR $TMP_DIR/*
+
+exit 0
+```
+
 # Tips & Tricks
 ## CUPS
 lpr <file> print a file
