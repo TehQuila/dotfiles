@@ -92,9 +92,6 @@ mv /tmp/base16-vim/colors/* $HOME/.vim/colors
 
 sudo pacman -S texlive-core texlive-bin texlive-bibtexextra texlive-latexextra biber --noconfirm
 
-gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-curl -sSL https://get.rvm.io | sudo bash -s stable
-cp ./home/rvmrc $HOME/.rvmrc
 
 # TODO think about different optional software
 echo "Setup a Printer? [y/n]"
@@ -137,4 +134,16 @@ echo "Setup folgin@home? [y/n]"
 read fah
 if [[ "$fah" -eq "n" ]]; then
    yaourt -S foldingathome --noconfirm
+fi
+
+echo "Setup Development tools? [y/n]"
+read dev
+if [[ "$dev" -eq "n" ]]; then
+   gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+   curl -sSL https://get.rvm.io | sudo bash -s stable
+   cp ./home/rvmrc $HOME/.rvmrc
+
+   sudo pacman -S python nodejs npm --noconfirm
+   yaourt -S datagrip rubymine pycharm-professional android-studio android-tools --noconfirm
+   gpasswd -a tim adbusers
 fi
