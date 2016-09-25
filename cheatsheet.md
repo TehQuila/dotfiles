@@ -182,7 +182,7 @@ turn it of `fSELINUX=disabled`
 restart the system
 
 ## Enable automated blocklist
-```shell
+``` shell
 #!/bin/bash
 
 PATH=$PATH:/sbin
@@ -256,6 +256,7 @@ df - diskspace
 fdisk - partition info
 mount - mounted filesystems
 free - RAM Info
+lsmod - Display loaded kernel modules (includes device drivers)
 
 ## VIM Controls
 Find first right occurance in line: f+<symbol>

@@ -6,7 +6,10 @@ cp $HOME/.gitconfig ./home/gitconfig
 cp $HOME/.curlrc ./home/curlrc
 
 cp $HOME/.xbindkeysrc ./home/xbindkeysrc
-cp /etc/X11/xorg.conf.d/* ./etc/X11/xorg.conf.d
+cp /etc/X11/xorg.conf.d/00-keyboard.conf ./etc/X11/xorg.conf.d
+cp /etc/X11/xorg.conf.d/01-mouse.conf ./etc/X11/xorg.conf.d
+cp /etc/X11/xorg.conf.d/10-trackpoint.conf ./etc/X11/xorg.conf.d
+cp /etc/X11/xorg.conf.d/11-touchpad.conf ./etc/X11/xorg.conf.d
 
 cp $HOME/.bash_profile ./home/bash_profile
 cp $HOME/.xinitrc ./home/xinitrc
