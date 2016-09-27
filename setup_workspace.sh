@@ -17,5 +17,6 @@ curl -sSL https://get.rvm.io | sudo bash -s stable
 cp ./home/rvmrc $HOME/.rvmrc
 
 sudo pacman -S python nodejs npm --noconfirm
+
 yaourt -S datagrip intellij-idea-ultimate-edition clion rubymine pycharm-professional android-studio android-tools --noconfirm
 gpasswd -a $USER adbusers

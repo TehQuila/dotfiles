@@ -23,13 +23,19 @@ yaourt -S foldingathome
 mkdir $HOME/.config
 git clone git@github.com:chriskempson/base16-shell.git $HOME/.config/base16-shell
 
-mkdir -p $HOME/.vim/autoload $HOME/.vim/bundle $HOME/.vim/colors
+mkdir -p $HOME/.vim/autoload
+mkdir -p $HOME/.vim/bundle
+mkdir -p $HOME/.vim/colors
+
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
 git clone git://github.com/chriskempson/base16-vim.git /tmp
 mv /tmp/base16-vim/colors/* $HOME/.vim/colors
+
 git clone git@github.com:vim-airline/vim-airline $HOME/.vim/bundle/vim-airline
 git clone git@github.com:vim-airline/vim-airline-themes $HOME/.vim/bundle/vim-airline-themes
 git clone git@github.com:ctrlpvim/ctrlp.vim.git $HOME/.vim/bundle/ctrlp.vim
+
 vim -u NONE -c "helptags vim-airline/doc" -c "helptags vim-airline-themes/doc" -c "helptags ctrlp.vim/doc" -c q
 
 # Execute setup commands
