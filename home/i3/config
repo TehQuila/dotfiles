@@ -126,7 +126,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # lock screen with i3lock
-# bindsym $mod+Shift+x exec i3lock -c 181818 -d -n
+bindsym $mod+Shift+x exec i3lock -c 181818 -d -n
 
 set $Locker i3lock -dc 181818 && sleep 5
 
@@ -185,6 +185,7 @@ bindsym $mod+m focus floating; mode "move"
 bar {
     status_command i3status -c ~/.i3/i3status.conf
     position bottom
+    tray_output none
     colors {
         background $black
         # class            text    backgr
