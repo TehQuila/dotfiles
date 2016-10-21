@@ -1,3 +1,0 @@
-#!/bin/sh
-
-feh --bg-scale '/home/tim/.i3/wallpaper.png'

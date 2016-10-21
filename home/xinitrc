@@ -15,6 +15,7 @@ fi
 eval $(cat $HOME/.fehbg)
 
 # execute window manager, make sure automount works
+feh --bg-scale "$HOME"'/.i3/wallpaper.png'
 exec bash -c 'devmon -g & i3'
 
 # when debugging i3 uncomment this line

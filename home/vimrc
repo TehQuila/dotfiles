@@ -14,6 +14,11 @@ set so=7
 set ignorecase
 set smartcase
 
+set ruler
+
+" Don't redraw while executing macros (good performance config)
+set lazyredraw
+
 " Highlight search results
 set hlsearch
 
@@ -25,8 +30,11 @@ set number
 
 " Use spaces instead of tabs
 set expandtab
+set smarttab
+set ai " Auto indent
+set si " Smart indent
 
-" 1 tab == 4 spaces
+" 1 tab == 3 spaces
 set shiftwidth=3
 set tabstop=3
 
