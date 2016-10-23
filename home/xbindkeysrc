@@ -1,4 +1,11 @@
-(xbindkey '("XF86AudioRaiseVolume") "amixer set Master 2dB+ unmute")
-(xbindkey '("XF86AudioLowerVolume") "amixer set Master 2dB- unmute")
-(xbindkey '("XF86AudioMute") "amixer set Master toggle")
-(xbindkey '("XF86AudioMicMute") "amixer set Capture toggle")
+"amixer set Master 2dB+ unmute"
+   XF86AudioRaiseVolume
+
+"amixer set Master 2dB- unmute"
+   XF86AudioLowerVolume
+
+"amixer set Master toggle"
+   XF86AudioMute
+
+"amixer set Capture toggle"
+   XF86AudioMicMute
