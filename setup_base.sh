@@ -1,5 +1,12 @@
 #!/usr/bin/bash
 
+# TODO
+# X11 scren turns black automatically
+# firefox setings and plugins
+# bluetooth: https://bbs.archlinux.org/viewtopic.php?id=166678&p=2
+# i3 open standard windows on every screen
+# add Fn keys to xbindkeysrc
+
 # Initialize pacman
 sudo cp ./etc/pacman.conf /etc
 sudo pacman-key --init
@@ -14,8 +21,6 @@ git clone https://aur.archlinux.org/yaourt.git /tmp/yaourt
 
 # Install packages
 sudo pacman -S xorg-server xorg-xinit xorg-xrandr xorg-xrdb xterm bash-completion openssh i3-wm i3lock i3status dmenu feh ttf-dejavu unzip unrar keepass firefox scrot ntfs-3g udisks2 udevil gvim texlive-core texlive-bin texlive-bibtexextra texlive-latexextra biber --noconfirm
-
-# TODO setup firefox (settings/plugins etc)
 
 # Install optional packages
 sudo pacman -S alsa-utils
@@ -68,7 +73,7 @@ if [[ "$laptop" -eq "y" ]]; then
    cp ./home/xbindkeysrc $HOME/.xbindkeysrc # bind keycodes
 fi
 
-# TODO Setup Bluetooth
+# Setup Bluetooth
 echo "Setup Bluetooth? [y/n]"
 read bluetooth
 if [[ "$bluetooth" -eq "y" ]]; then
@@ -79,7 +84,6 @@ if [[ "$bluetooth" -eq "y" ]]; then
 
    sudo systemctl start bluetooth.service
 fi
-
 
 # Setup Monitors
 controller=$(lspci | grep -i vga)
