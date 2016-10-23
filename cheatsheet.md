@@ -41,6 +41,7 @@
 3. Set keyboard layout: `loadkeys de_CH-latin1`
 4. Set console font if certain chars not displayed correctly: `setfont lat9w-16`
 5. Connect to internet: `ip link set enp0s3 up`
+TODO: Wifi during installation?
 6. Update system clock: `timedatectl set-ntp true`
 7. Prepare the storage devices
   * Identify the devices with `lsblk`
@@ -89,7 +90,7 @@
   * `grub-install --target=i386-pc /dev/sdx`
   * If using Intel CPU, install `intel-ucode`
   * `grub-mkconfig -o /boot/grub/grub.cfg`
-7. Network
+7. Configure Network
   * `echo <hostname> > /etc/hostname`
   * Append hostname to `/etc/hosts`
   * Enable Eth: `systemctl enable dhcpcd@enp0s25.service`
@@ -103,15 +104,21 @@
 3. `reboot`
 
 ## Post Installation
-1. Create Non-Root User: `useradd -m -G wheel -s /bin/bash <username>`
-2. Set Password of new user: `passwd <username>`
+1. Create non-root user: `useradd -m -G wheel -s /bin/bash <username>`
+2. Set password of new user: `passwd <username>`
 3. Enable group `wheel` to use `sudo`: `visudo`
 4. Relogin as new user.
 5. Install git: `sudo pacman -S git`
-6. `mkdir $HOME/workspace`
-7. `git clone https://github.com/TehQuila/dotfiles.git`
-8. `rvm install ruby`
-9. `rvm --default use ruby`
+6. Initialize workspace:
+   * `mkdir $HOME/workspace`
+   * `git clone https://github.com/TehQuila/dotfiles.git $HOME/workspace/dotfiles`
+8. Setup base system: `./$HOME/workspace/dotfiles/setup_base.sh`
+9. Relogin
+10. Activate base16 shell: `base16_default-dark`
+11. When setting up WLAN: `wifi-menu`
+12. Install RVM:
+   * `rvm install ruby`
+   * `rvm --default use ruby`
 
 # Server Hardening
 ## Three principles
@@ -276,7 +283,7 @@ If SD-Card cannot be accessed by fdisk due to input/output error, try overwritin
 2. Use Gemset: `rvm use 2.3.0@uml_backend`
 3. Install bundle and rails: `gem install bundle rails --no-ri --no-rdoc
 
-## Bluetooth
+## TODO Bluetooth
 1. systemctl start bluetooth.service
 2. bluetoothctl
 3. Turn the power to the controller on by entering `power on`.
