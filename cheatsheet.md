@@ -49,7 +49,7 @@
     1. Press g for new GPT partition table
     2. Press p to ensure that no partitions are present.
     3. Create boot partition
-      * press n, p, ENTER, ENTER, +100M
+      * press n, ENTER, ENTER, +100M
       * press t, 1 to choose EFI partition type
   * If you install onto an BIOS System choose MBR.
     1. Press o for new MBR partition table.
@@ -81,6 +81,10 @@
   * Create symlink `/etc/localtime` with `ln -s /usr/share/zoneinfo/<Zone/SubZone> /etc/localtime`
   * Adjust time skew: `hwclock --systohc --utc`
 6. Install Bootloader (GRUB)
+  * When installing to GPT/UEFI
+  * `pacman -S grub efibootmgr`
+  * grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
+  * When installing to MBR/BIOS
   * `pacman -S grub`
   * `grub-install --target=i386-pc /dev/sdx`
   * If using Intel CPU, install `intel-ucode`
