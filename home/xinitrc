@@ -1,7 +1,7 @@
 # !/bin/sh
 
-[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
-[[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
+[[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources
+[[ -f $HOME/.Xmodmap ]] && xmodmap $HOME/.Xmodmap
 
 # enable custom keybindings configured in ~/.xbindkeysrc
 xbindkeys
