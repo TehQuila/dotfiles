@@ -8,8 +8,8 @@ sudo pacman -Syu --noconfirm --needed
 
 # Install yaourt
 git clone https://aur.archlinux.org/package-query.git /tmp/package-query
-git clone https://aur.archlinux.org/yaourt.git /tmp/yaourt
 (cd /tmp/package-query && exec makepkg -si)
+git clone https://aur.archlinux.org/yaourt.git /tmp/yaourt
 (cd /tmp/yaourt && exec makepkg -si)
 
 # Install packages
