@@ -111,11 +111,12 @@ TODO: Wifi during installation?
 5. Install git: `sudo pacman -S git`
 6. Initialize workspace:
    * `mkdir $HOME/workspace`
-   * `git clone https://github.com/TehQuila/dotfiles.git $HOME/workspace/dotfiles`
+   * `git clone git@github.com:TehQuila/dotfiles.git $HOME/workspace/dotfiles`
 8. Setup base system: `./$HOME/workspace/dotfiles/setup_base.sh`
 9. Relogin
 10. Activate base16 shell: `base16_default-dark`
 11. When setting up WLAN: `wifi-menu`
+12. Setup workspace: `./$HOME/workspace/dotfiles/setup_workspace.sh
 12. Install RVM:
    * `rvm install ruby`
    * `rvm --default use ruby`
