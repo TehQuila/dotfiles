@@ -50,7 +50,7 @@ cp ./home/xinitrc $HOME/.xinitrc
 cp ./home/Xresources $HOME/.Xresources
 cp ./home/bash_profile $HOME/.bash_profile
 cp ./home/bashrc $HOME/.bashrc
-cp -r ./home/i3 $HOME/.i3
+cp ./home/i3 $HOME/.i3
 cp ./home/fehbg $HOME/.fehbg
 cp ./home/vimrc $HOME/.vimrc
 cp ./home/toprc $HOME/.toprc
