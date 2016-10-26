@@ -6,6 +6,10 @@
 # bluetooth: https://bbs.archlinux.org/viewtopic.php?id=166678&p=2
 # i3 open standard windows on every screen
 # add Fn keys to xbindkeysrc
+#add nfs mounting for NAS:
+#sudo pacman -S nfs-utils
+#systemctl start rpcbind
+#write: "systemctl start rpcbind" in fstab
 
 # Initialize pacman
 sudo cp ./etc/pacman.conf /etc
@@ -20,7 +24,8 @@ git clone https://aur.archlinux.org/yaourt.git /tmp/yaourt
 (cd /tmp/yaourt && exec makepkg -si)
 
 # Install packages
-sudo pacman -S xorg-server xorg-xinit xorg-xrandr xorg-xrdb xterm bash-completion openssh i3-wm i3lock i3status dmenu feh ttf-dejavu unzip unrar keepass firefox scrot ntfs-3g udisks2 udevil gvim texlive-core texlive-bin texlive-bibtexextra texlive-latexextra biber --noconfirm
+sudo pacman -S xorg-server xorg-xinit xorg-xrandr xorg-xrdb xterm bash-completion openssh i3-wm i3lock i3status dmenu feh ttf-dejavu unzip unrar keepass scrot ntfs-3g udisks2 udevil gvim texlive-core texlive-bin texlive-bibtexextra texlive-latexextra biber --noconfirm
+yaourt -S vivaldi --noconfirm
 
 # Install optional packages
 sudo pacman -S alsa-utils
