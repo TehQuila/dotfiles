@@ -39,11 +39,14 @@ yaourt -S vivaldi --noconfirm
 sudo pacman -S alsa-utils
 yaourt -S foldingathome
 
-echo "Install latex?"
-sudo pacman -S texlive-core --noconfirm
-sudo pacman -S texlive-bin --noconfirm
-sudo pacman -S texlive-bibtexextra --noconfirm
-sudo pacman -S texlive-latexextra --noconfirm
+echo "Setup LaTeX? [y/n]"
+read latex
+if [[ "$latex" -eq "y" ]]; then
+   sudo pacman -S texlive-core --noconfirm
+   sudo pacman -S texlive-bin --noconfirm
+   sudo pacman -S texlive-bibtexextra --noconfirm
+   sudo pacman -S texlive-latexextra --noconfirm
+fi
 
 # Install code from github
 mkdir $HOME/.config
