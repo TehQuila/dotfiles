@@ -19,6 +19,7 @@ GoTo: <linenumber> g
 Delete: d
 Change: c
 Paste: p
+Indent: >
 
 ### Directions
 #### What
