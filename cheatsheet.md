@@ -194,7 +194,7 @@ turn it of `fSELINUX=disabled`
 restart the system
 
 ## Enable automated blocklist
-``` shell
+```shell
 #!/bin/bash
 
 PATH=$PATH:/sbin
@@ -271,9 +271,17 @@ free - RAM Info
 lsmod - Display loaded kernel modules (includes device drivers)
 
 ## VIM Controls
+Go Page up: Ctrl+u
+Go Page down: Ctrl+d
+
 Find first right occurance in line: f+<symbol>
 Find first left occurance in line: F+<symbol>
-Change in between symbol: c+i/c/v+<symbol>
+
+Change till end of line: C
+Change in between symbol: c+i" (change within the next (or surrounding) ")
+Change in between (html) tag: c+it
+
+Execute Globally :g
 
 ## input/output error on SD-Card
 If SD-Card cannot be accessed by fdisk due to input/output error, try overwriting the whole thing with zeros:
