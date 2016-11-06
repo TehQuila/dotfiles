@@ -44,6 +44,7 @@ Find first left occurance in line: F+<symbol>
 
 ### Common Tasks
 Copy to system clipboard: " + y
+Insert in front on multiple lines: ctrl+v I
 Insert behind multiple lines: ctrl+v $ A
 
 S&R globally but ask: %s/foo/bar/gc
