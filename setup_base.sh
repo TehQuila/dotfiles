@@ -2,7 +2,7 @@
 
 # TODO
 # X11 scren turns black automatically
-# firefox setings and plugins
+# vivaldi setings and plugins
 # bluetooth: https://bbs.archlinux.org/viewtopic.php?id=166678&p=2
 # i3 open standard windows on every screen
 # add Fn keys to xbindkeysrc
@@ -24,12 +24,26 @@ git clone https://aur.archlinux.org/yaourt.git /tmp/yaourt
 (cd /tmp/yaourt && exec makepkg -si)
 
 # Install packages
-sudo pacman -S xorg-server xorg-xinit xorg-xrandr xorg-xrdb xterm bash-completion openssh i3-wm i3lock i3status dmenu feh ttf-dejavu unzip unrar keepass scrot ntfs-3g udisks2 udevil gvim texlive-core texlive-bin texlive-bibtexextra texlive-latexextra biber --noconfirm
+sudo pacman -S xorg-server --noconfirm
+sudo pacman -S xorg-xinit --noconfirm
+sudo pacman -S xorg-xrandr --noconfirm
+sudo pacman -S xorg-xrdb --noconfirm
+sudo pacman -S bash-completion --noconfirm
+sudo pacman -S i3-wm --noconfirm
+sudo pacman -S ttf-dejavu --noconfirm
+sudo pacman -S ntfs-3g --noconfirm
+sudo pacman -S xterm openssh biber i3lock i3status dmenu feh unzip unrar keepass scrot udisks2 udevil gvim --noconfirm
 yaourt -S vivaldi --noconfirm
 
 # Install optional packages
 sudo pacman -S alsa-utils
 yaourt -S foldingathome
+
+echo "Install latex?"
+sudo pacman -S texlive-core --noconfirm
+sudo pacman -S texlive-bin --noconfirm
+sudo pacman -S texlive-bibtexextra --noconfirm
+sudo pacman -S texlive-latexextra --noconfirm
 
 # Install code from github
 mkdir $HOME/.config
