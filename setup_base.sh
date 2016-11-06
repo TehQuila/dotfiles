@@ -131,7 +131,7 @@ if [[ "$monitors" -eq "y" ]]; then
    done < <(xrandr)
 
    echo "Choose primary screen: "
-   for i in ${!screens[@]}; do
+   for i in${!screens[@]}; do
       echo "($i) ${screens[i]}"
    done
    read primary
@@ -146,7 +146,16 @@ if [[ "$monitors" -eq "y" ]]; then
          read side
          echo "Option \"$side\" \"${screens[primary]}\"" | sudo tee --append $monitor_config
       fi
+      echo "Option \"DPMS\" \"true\"" | sudo tee --append $monitor_config
       echo "EndSection" | sudo tee --append $monitor_config
       echo "" | sudo tee --append $monitor_config
    done
+
+   echo "Section \"ServerLayout\"" >> sudo tee --append $monitor_config
+   echo "   Identifier \"ServerLayout0\"" >> sudo tee --append $monitor_config
+   echo "   Option \"StandbyTime\" \"0\"" >> sudo tee --append $monitor_config
+   echo "   Option \"SuspendTime\" \"0\"" >> sudo tee --append $monitor_config
+   echo "   Option \"OffTime\" \"0\"" >> sudo tee --append $monitor_config
+   echo "   Option \"BlankTime\" \"0\"" >> sudo tee --append $monitor_config
+   echo "EndSection" >> sudo tee --append $monitor_config
 fi
