@@ -18,7 +18,9 @@ cp $HOME/.bashrc ./home/bashrc
 cp $HOME/.toprc ./home/toprc
 
 cp -r $HOME/.i3/* ./home/i3
-cp -r $HOME/.config/vivaldi/* ./home/config/vivaldi
+
+# FIXME
+# cp -r $HOME/.config/vivaldi/* ./home/config/vivaldi
 
 cp $HOME/.vimrc ./home/vimrc
 
