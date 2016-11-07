@@ -1,0 +1,701 @@
+{
+   "checksum": "4c2d5d019912f80599cd6a98fb0f3844",
+   "roots": {
+      "bookmark_bar": {
+         "children": [ {
+            "children": [ {
+               "date_added": "13121855990243902",
+               "id": "8",
+               "meta_info": {
+                  "Description": "vivaldi",
+                  "Thumbnail": "/resources/sd_vivaldi.png"
+               },
+               "name": "Vivaldi",
+               "type": "url",
+               "url": "https://vivaldi.com/"
+            }, {
+               "date_added": "13121855990288998",
+               "id": "9",
+               "meta_info": {
+                  "Description": "vivaldi",
+                  "Thumbnail": "/resources/sd_vivaldi_community.gif"
+               },
+               "name": "Vivaldi Community",
+               "type": "url",
+               "url": "https://vivaldi.net/en-US/"
+            }, {
+               "date_added": "13121855990335249",
+               "id": "10",
+               "meta_info": {
+                  "Description": "travel, airfare",
+                  "Thumbnail": "/resources/sd_booking.com.png"
+               },
+               "name": "Booking.com",
+               "type": "url",
+               "url": "https://www.booking.com/country/us.en-us.html?aid=807124"
+            }, {
+               "date_added": "13121855990385710",
+               "id": "11",
+               "meta_info": {
+                  "Description": "shopping",
+                  "Thumbnail": "/resources/sd_ebay.png"
+               },
+               "name": "eBay",
+               "type": "url",
+               "url": "https://vivaldi.com/bk/ebay-en-us"
+            }, {
+               "date_added": "13121855990404342",
+               "id": "12",
+               "meta_info": {
+                  "Thumbnail": "/resources/sd_twitter.png"
+               },
+               "name": "Twitter",
+               "type": "url",
+               "url": "https://twitter.com/"
+            }, {
+               "date_added": "13121855990422519",
+               "id": "13",
+               "meta_info": {
+                  "Thumbnail": "/resources/sd_ted.png"
+               },
+               "name": "TED",
+               "type": "url",
+               "url": "http://www.ted.com/"
+            }, {
+               "date_added": "13121855990430654",
+               "id": "14",
+               "meta_info": {
+                  "Thumbnail": "/resources/sd_facebook.png"
+               },
+               "name": "Facebook",
+               "type": "url",
+               "url": "https://www.facebook.com/"
+            }, {
+               "children": [ {
+                  "date_added": "13121855990441634",
+                  "id": "16",
+                  "meta_info": {
+                     "Thumbnail": "/resources/sd_techcrunch.png"
+                  },
+                  "name": "TechCrunch",
+                  "type": "url",
+                  "url": "http://techcrunch.com/"
+               }, {
+                  "date_added": "13121855990449046",
+                  "id": "17",
+                  "meta_info": {
+                     "Thumbnail": "/resources/sd_arstechnica.png"
+                  },
+                  "name": "Ars Technica",
+                  "type": "url",
+                  "url": "http://arstechnica.com/"
+               }, {
+                  "date_added": "13121855990452248",
+                  "id": "18",
+                  "meta_info": {
+                     "Thumbnail": "/resources/sd_newyorktimes.png"
+                  },
+                  "name": "The New York Times",
+                  "type": "url",
+                  "url": "http://www.nytimes.com/"
+               } ],
+               "date_added": "13121855990436861",
+               "date_modified": "13121855990452248",
+               "id": "15",
+               "name": "News",
+               "type": "folder"
+            } ],
+            "date_added": "13121855990215166",
+            "date_modified": "13121855990436901",
+            "id": "7",
+            "meta_info": {
+               "Speeddial": "true"
+            },
+            "name": "Speed Dial",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13121855990460926",
+               "id": "20",
+               "meta_info": {
+                  "Description": "navigation, gadgets"
+               },
+               "name": "Garmin | United States | Home",
+               "type": "url",
+               "url": "https://vivaldi.com/bk/garmin-en-us"
+            }, {
+               "date_added": "13121855990461686",
+               "id": "21",
+               "meta_info": {
+                  "Description": "audio, electronics"
+               },
+               "name": "Sonos | HiFi Wireless Speakers & Home Audio Systems",
+               "type": "url",
+               "url": "https://vivaldi.com/bk/sonos-en-us"
+            }, {
+               "date_added": "13121855990462408",
+               "id": "22",
+               "meta_info": {
+                  "Description": "electronics, networking, hardware"
+               },
+               "name": "Networking, iPhone, iPad, Samsung and Kindle Accessories",
+               "type": "url",
+               "url": "https://vivaldi.com/bk/belkin-en-us"
+            }, {
+               "date_added": "13121855990463268",
+               "id": "23",
+               "meta_info": {
+                  "Description": "electronics, audio"
+               },
+               "name": "Bose - Better Sound Through Research",
+               "type": "url",
+               "url": "https://vivaldi.com/bk/bose-en-us"
+            }, {
+               "date_added": "13121855990464252",
+               "id": "24",
+               "meta_info": {
+                  "Description": "Internet, domains, hosting"
+               },
+               "name": "Domain Name Registration and Web Hosting | Domain.com",
+               "type": "url",
+               "url": "https://vivaldi.com/bk/domaincom-en-us"
+            }, {
+               "date_added": "13121855990465271",
+               "id": "25",
+               "meta_info": {
+                  "Description": "electronics, hardware, computer, gadgets"
+               },
+               "name": "Computer Products, Laptops, Electronics, HDTVs, Digital Cameras, Cellphones and More - Newegg.ca",
+               "type": "url",
+               "url": "https://vivaldi.com/bk/neweggcanada-en-us"
+            }, {
+               "date_added": "13121855990466049",
+               "id": "26",
+               "meta_info": {
+                  "Description": "software, media"
+               },
+               "name": "Best Video Editing, Photo Editing, & Blu-ray Media Player | CyberLink",
+               "type": "url",
+               "url": "https://vivaldi.com/bk/cyberlinksoftware-en-us"
+            }, {
+               "date_added": "13121855990466902",
+               "id": "27",
+               "meta_info": {
+                  "Description": "gadgets, electronics"
+               },
+               "name": "iHome: Live. Life. Loud.",
+               "type": "url",
+               "url": "https://vivaldi.com/bk/ihome-en-us"
+            }, {
+               "date_added": "13121855990467677",
+               "id": "28",
+               "meta_info": {
+                  "Description": "gadgets, technology"
+               },
+               "name": "Jabra • Wireless Bluetooth Headsets for Office, Car & Sport",
+               "type": "url",
+               "url": "https://vivaldi.com/bk/jabra-en-us"
+            }, {
+               "date_added": "13121855990468350",
+               "id": "29",
+               "meta_info": {
+                  "Description": "gadgets, technology"
+               },
+               "name": "TomTom",
+               "type": "url",
+               "url": "https://vivaldi.com/bk/tomtom-en-us"
+            }, {
+               "date_added": "13121855990469123",
+               "id": "30",
+               "name": "GitHub · Build software better, together.",
+               "type": "url",
+               "url": "https://github.com/"
+            }, {
+               "date_added": "13121855990469896",
+               "id": "31",
+               "name": "Gizmodo - Tech By Design",
+               "type": "url",
+               "url": "http://gizmodo.com/"
+            }, {
+               "date_added": "13121855990470534",
+               "id": "32",
+               "name": "The Verge",
+               "type": "url",
+               "url": "http://www.theverge.com/"
+            }, {
+               "date_added": "13121855990471245",
+               "id": "33",
+               "name": "Engadget | Technology News, Advice and Features",
+               "type": "url",
+               "url": "http://www.engadget.com/"
+            }, {
+               "date_added": "13121855990471865",
+               "id": "34",
+               "name": "WIRED",
+               "type": "url",
+               "url": "http://www.wired.com/"
+            }, {
+               "date_added": "13121855990472486",
+               "id": "35",
+               "name": "Slashdot",
+               "type": "url",
+               "url": "http://slashdot.org/"
+            }, {
+               "date_added": "13121855990473181",
+               "id": "36",
+               "name": "reddit: the front page of the internet",
+               "type": "url",
+               "url": "http://www.reddit.com/"
+            } ],
+            "date_added": "13121855990459919",
+            "date_modified": "13121855990473181",
+            "id": "19",
+            "name": "Technology",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13121855990474443",
+               "id": "38",
+               "meta_info": {
+                  "Description": "gaming"
+               },
+               "name": "Greenman Gaming",
+               "type": "url",
+               "url": "https://vivaldi.com/bk/greenmangaming-en-us"
+            }, {
+               "date_added": "13121855990475066",
+               "id": "39",
+               "meta_info": {
+                  "Description": "computer, gaming"
+               },
+               "name": "For Gamers, By Gamers",
+               "type": "url",
+               "url": "https://vivaldi.com/bk/razer-en-us"
+            }, {
+               "date_added": "13121855990475692",
+               "id": "40",
+               "name": "IGN",
+               "type": "url",
+               "url": "http://www.ign.com/"
+            }, {
+               "date_added": "13121855990476392",
+               "id": "41",
+               "name": "Minecraft Forum",
+               "type": "url",
+               "url": "http://www.minecraftforum.net/"
+            }, {
+               "date_added": "13121855990477130",
+               "id": "42",
+               "name": "GameFAQs - Video Game Cheats, Reviews, FAQs, Message Boards, and More",
+               "type": "url",
+               "url": "http://www.gamefaqs.com/"
+            } ],
+            "date_added": "13121855990473794",
+            "date_modified": "13121855990477130",
+            "id": "37",
+            "name": "Games",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13121855990478373",
+               "id": "44",
+               "name": "CNN.com - Breaking News, U.S., World, Weather, Entertainment & Video News",
+               "type": "url",
+               "url": "http://www.cnn.com/"
+            }, {
+               "date_added": "13121855990478988",
+               "id": "45",
+               "name": "Huffington Post - Breaking News and Opinion",
+               "type": "url",
+               "url": "http://www.huffingtonpost.com/"
+            }, {
+               "date_added": "13121855990479765",
+               "id": "46",
+               "name": "The Guardian | Latest news, sport and comment",
+               "type": "url",
+               "url": "http://www.theguardian.com/"
+            }, {
+               "date_added": "13121855990480360",
+               "id": "47",
+               "name": "Reuters.com | Business & Financial News, Breaking US & International News",
+               "type": "url",
+               "url": "http://www.reuters.com/"
+            }, {
+               "date_added": "13121855990481894",
+               "id": "48",
+               "name": "Washington Post: Breaking News, World, US, DC News & Analysis",
+               "type": "url",
+               "url": "http://www.washingtonpost.com/"
+            }, {
+               "date_added": "13121855990482557",
+               "id": "49",
+               "name": "Examiner.com",
+               "type": "url",
+               "url": "http://www.examiner.com/"
+            }, {
+               "date_added": "13121855990483170",
+               "id": "50",
+               "name": "TIME - Breaking News, Analysis, Politics, Blogs, News Photos, Video, Tech Reviews",
+               "type": "url",
+               "url": "http://time.com/"
+            } ],
+            "date_added": "13121855990477817",
+            "date_modified": "13121855990483170",
+            "id": "43",
+            "name": "News",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13121855990484952",
+               "id": "52",
+               "meta_info": {
+                  "Description": "shoes, retail, apparel"
+               },
+               "name": "Online Shoes, Clothing, Free Shipping and Returns| Zappos.com",
+               "type": "url",
+               "url": "https://vivaldi.com/bk/zappos-en-us"
+            }, {
+               "date_added": "13121855990485583",
+               "id": "53",
+               "meta_info": {
+                  "Description": "electronics, gadgets, gaming"
+               },
+               "name": "GearBest - Best Gadgets & Electronics Deals",
+               "type": "url",
+               "url": "https://vivaldi.com/bk/gearbest-en-us"
+            }, {
+               "date_added": "13121855990486351",
+               "id": "54",
+               "meta_info": {
+                  "Description": "computer, accessories"
+               },
+               "name": "Cases and Accessories for Tablets, Mobile Devices, and More | Griffin Technology",
+               "type": "url",
+               "url": "https://vivaldi.com/bk/griffin-en-us"
+            }, {
+               "date_added": "13121855990486965",
+               "id": "55",
+               "meta_info": {
+                  "Description": "audio, gadgets, accessories"
+               },
+               "name": "Headphones, Speakers, HDMI Cables and Power Solutions from Monster",
+               "type": "url",
+               "url": "https://vivaldi.com/bk/monsterproducts-en-us"
+            }, {
+               "date_added": "13121855990487675",
+               "id": "56",
+               "meta_info": {
+                  "Description": "apparel, retail"
+               },
+               "name": "eBags - Shop Bags and Accessories - Free Shipping – eBags.com",
+               "type": "url",
+               "url": "https://vivaldi.com/bk/ebagscom-en-us"
+            }, {
+               "date_added": "13121855990488712",
+               "id": "57",
+               "meta_info": {
+                  "Description": "gadgets, electronics, retail"
+               },
+               "name": "Gift Ideas, Smart Solutions, Unique Gifts for Him & Her at Brookstone",
+               "type": "url",
+               "url": "https://vivaldi.com/bk/brookstonecom-en-us"
+            }, {
+               "date_added": "13121855990489358",
+               "id": "58",
+               "meta_info": {
+                  "Description": "shopping, lifestyle"
+               },
+               "name": "LEGO Shop",
+               "type": "url",
+               "url": "https://vivaldi.com/bk/lego-en-us"
+            }, {
+               "date_added": "13121855990490705",
+               "id": "59",
+               "meta_info": {
+                  "Description": "gadgets, technology, shopping"
+               },
+               "name": "Protective Cases for iPhone, iPad, MacBook, Samsung | Speck Products",
+               "type": "url",
+               "url": "https://vivaldi.com/bk/speck-en-us"
+            }, {
+               "date_added": "13121855990491337",
+               "id": "60",
+               "meta_info": {
+                  "Description": "shopping"
+               },
+               "name": " Buy , Sell , Search Textbooks , Music , Movies &amp; Games Online at Half.com",
+               "type": "url",
+               "url": "https://vivaldi.com/bk/halfcom-en-us"
+            }, {
+               "date_added": "13121855990492065",
+               "id": "61",
+               "meta_info": {
+                  "Description": "apparel, shopping"
+               },
+               "name": "Apparel Market",
+               "type": "url",
+               "url": "https://vivaldi.com/bk/alibabaexpress-en-us"
+            } ],
+            "date_added": "13121855990484270",
+            "date_modified": "13121855990492065",
+            "id": "51",
+            "name": "Shopping",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13121855990493354",
+               "id": "63",
+               "name": "Goal.com | Latest Football News, Transfer Rumours & More",
+               "type": "url",
+               "url": "http://www.goal.com/"
+            }, {
+               "date_added": "13121855990494032",
+               "id": "64",
+               "name": "NFL.com - Official Site of the National Football League",
+               "type": "url",
+               "url": "http://www.nfl.com/"
+            }, {
+               "date_added": "13121855990520754",
+               "id": "65",
+               "name": "MLB.com: The Official Site of Major League Baseball",
+               "type": "url",
+               "url": "http://www.mlb.com/"
+            }, {
+               "date_added": "13121855990523524",
+               "id": "66",
+               "name": "CBSSports.com Sports News, Fantasy Scores, Sports Video",
+               "type": "url",
+               "url": "http://www.cbssports.com/"
+            }, {
+               "date_added": "13121855990524666",
+               "id": "67",
+               "name": "NBA.com",
+               "type": "url",
+               "url": "http://www.nba.com/"
+            }, {
+               "date_added": "13121855990526000",
+               "id": "68",
+               "name": "Bleacher Report | Sports. Highlights. News. Now.",
+               "type": "url",
+               "url": "http://www.bleacherreport.com/"
+            } ],
+            "date_added": "13121855990492675",
+            "date_modified": "13121855990526000",
+            "id": "62",
+            "name": "Sports",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13121855990527257",
+               "id": "70",
+               "name": "Yelp",
+               "type": "url",
+               "url": "http://www.yelp.com/"
+            }, {
+               "date_added": "13121855990527918",
+               "id": "71",
+               "name": "Craigslist",
+               "type": "url",
+               "url": "http://www.craigslist.org/"
+            }, {
+               "date_added": "13121855990528504",
+               "id": "72",
+               "name": "LivingSocial | Discover fun things to do",
+               "type": "url",
+               "url": "https://www.livingsocial.com/"
+            }, {
+               "date_added": "13121855990529277",
+               "id": "73",
+               "name": "OpenTable | Restaurants and Restaurant Reservations",
+               "type": "url",
+               "url": "http://www.opentable.com/"
+            } ],
+            "date_added": "13121855990526716",
+            "date_modified": "13121855990529277",
+            "id": "69",
+            "name": "Local",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13121855990530874",
+               "id": "75",
+               "meta_info": {
+                  "Description": "travel, airfare, lodging"
+               },
+               "name": "TripAdvisor: Read Reviews, Compare Prices & Book",
+               "type": "url",
+               "url": "https://vivaldi.com/bk/tripadvisor-en-us"
+            }, {
+               "date_added": "13121855990531560",
+               "id": "76",
+               "meta_info": {
+                  "Description": "travel"
+               },
+               "name": "Book a hotel room.",
+               "type": "url",
+               "url": "https://vivaldi.com/bk/extendedstayamerica-en-us"
+            }, {
+               "date_added": "13121855990532339",
+               "id": "77",
+               "meta_info": {
+                  "Description": "travel, airfare, lodging"
+               },
+               "name": "CheapOair.com | Cheap Airfare",
+               "type": "url",
+               "url": "https://vivaldi.com/bk/cheapoair-en-us"
+            }, {
+               "date_added": "13121855990533002",
+               "id": "78",
+               "meta_info": {
+                  "Description": "travel"
+               },
+               "name": "Lower price - Hotels",
+               "type": "url",
+               "url": "https://vivaldi.com/bk/hotelwiz-en-us"
+            }, {
+               "date_added": "13121855990533845",
+               "id": "79",
+               "meta_info": {
+                  "Thumbnail": "/resources/sd_dohop.png"
+               },
+               "name": "Dohop",
+               "type": "url",
+               "url": "https://www.dohop.com/?aff_wlname=Vivaldi"
+            } ],
+            "date_added": "13121855990530313",
+            "date_modified": "13121855990533845",
+            "id": "74",
+            "name": "Travel",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13121855990534983",
+               "id": "81",
+               "name": "WSJ",
+               "type": "url",
+               "url": "http://www.wsj.com/"
+            }, {
+               "date_added": "13121855990535648",
+               "id": "82",
+               "name": "Bloomberg - Business, Financial & Economic News, Stock Quotes",
+               "type": "url",
+               "url": "http://www.bloomberg.com/"
+            }, {
+               "date_added": "13121855990536239",
+               "id": "83",
+               "name": "The Economist - World News, Politics, Economics, Business & Finance",
+               "type": "url",
+               "url": "http://www.economist.com/"
+            }, {
+               "date_added": "13121855990536899",
+               "id": "84",
+               "name": "FT.com - World business, finance and political news from the Financial Times",
+               "type": "url",
+               "url": "http://www.ft.com/"
+            }, {
+               "date_added": "13121855990537495",
+               "id": "85",
+               "name": "CNBC – World Business News Leader",
+               "type": "url",
+               "url": "http://www.cnbc.com/"
+            }, {
+               "date_added": "13121855990538090",
+               "id": "86",
+               "name": "Forbes",
+               "type": "url",
+               "url": "http://www.forbes.com/"
+            } ],
+            "date_added": "13121855990534437",
+            "date_modified": "13121855990538090",
+            "id": "80",
+            "name": "Business",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13121855990539318",
+               "id": "88",
+               "name": "YouTube",
+               "type": "url",
+               "url": "http://www.youtube.com/"
+            }, {
+               "date_added": "13121855990539897",
+               "id": "89",
+               "name": "BBC Shop | DVD & Blu-ray Best Sellers",
+               "type": "url",
+               "url": "https://vivaldi.com/bk/bbcshop-en-us"
+            }, {
+               "date_added": "13121855990540561",
+               "id": "90",
+               "name": "Spotify Web Player",
+               "type": "url",
+               "url": "https://play.spotify.com/"
+            }, {
+               "date_added": "13121855990541236",
+               "id": "91",
+               "name": "Dailymotion",
+               "type": "url",
+               "url": "http://www.dailymotion.com/"
+            }, {
+               "date_added": "13121855990541810",
+               "id": "92",
+               "name": "IMDb - Movies, TV and Celebrities",
+               "type": "url",
+               "url": "http://www.imdb.com/"
+            }, {
+               "date_added": "13121855990542573",
+               "id": "93",
+               "name": "Rotten Tomatoes: Movies | TV Shows | Movie Trailers | Reviews",
+               "type": "url",
+               "url": "http://www.rottentomatoes.com/"
+            }, {
+               "date_added": "13121855990543176",
+               "id": "94",
+               "name": "Hulu | Free TV Shows and Movies - Watch Your Favorite TV Episodes and Movies Online",
+               "type": "url",
+               "url": "http://www.hulu.com/"
+            }, {
+               "date_added": "13121855990543872",
+               "id": "95",
+               "name": "Vimeo, Your Videos Belong Here",
+               "type": "url",
+               "url": "https://vimeo.com/"
+            } ],
+            "date_added": "13121855990538768",
+            "date_modified": "13121855990543872",
+            "id": "87",
+            "name": "Entertainment",
+            "type": "folder"
+         } ],
+         "date_added": "13121855989286429",
+         "date_modified": "13121855990538795",
+         "id": "1",
+         "name": "Bookmarks",
+         "type": "folder"
+      },
+      "other": {
+         "children": [  ],
+         "date_added": "13121855989286432",
+         "date_modified": "0",
+         "id": "2",
+         "name": "Other bookmarks",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "date_added": "13121855989286434",
+         "date_modified": "0",
+         "id": "3",
+         "name": "Mobile bookmarks",
+         "type": "folder"
+      },
+      "trash": {
+         "children": [  ],
+         "date_added": "13121855989286434",
+         "date_modified": "0",
+         "id": "4",
+         "name": "Trash",
+         "type": "folder"
+      }
+   },
+   "version": 1
+}
