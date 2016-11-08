@@ -19,6 +19,7 @@ cp $HOME/.toprc ./home/toprc
 
 cp -r $HOME/.i3/* ./home/i3
 
+# TODO omit downloads folder, history, cache, open tabs
 cp -r $HOME/.config/vivaldi/Default ./home/config/vivaldi
 
 cp $HOME/.vimrc ./home/vimrc
