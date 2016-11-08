@@ -2,7 +2,6 @@
 
 # TODO
 # X11 scren turns black automatically
-# vivaldi setings and plugins
 # bluetooth: https://bbs.archlinux.org/viewtopic.php?id=166678&p=2
 # i3 open standard windows on every screen
 # add Fn keys to xbindkeysrc
@@ -77,10 +76,11 @@ cp ./home/xinitrc $HOME/.xinitrc
 cp ./home/Xresources $HOME/.Xresources
 cp ./home/bash_profile $HOME/.bash_profile
 cp ./home/bashrc $HOME/.bashrc
-cp ./home/i3 $HOME/.i3
+cp -r ./home/i3 $HOME/.i3
 cp ./home/fehbg $HOME/.fehbg
 cp ./home/vimrc $HOME/.vimrc
 cp ./home/toprc $HOME/.toprc
+cp -rf ./home/config/vivaldi/Default $HOME/.config/Default
 
 # Setup X11
 sudo cp ./etc/X11/xorg.conf.d/00-keyboard.conf /etc/X11/xorg.conf.d
