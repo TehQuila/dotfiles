@@ -67,7 +67,6 @@ git clone https://github.com/ctrlpvim/ctrlp.vim.git $HOME/.vim/bundle/ctrlp.vim
 vim -u NONE -c "helptags $HOME/.vim/bundle/vim-airline/doc" -c "helptags $HOME/.vim/bundle/vim-airline-themes/doc" -c "helptags $HOME/.vim/bundle/ctrlp.vim/doc" -c q
 
 # Execute setup commands
-modprobe btusb
 
 # Copy configs
 cp ./home/gitconfig $HOME/.gitconfig
@@ -100,6 +99,8 @@ echo "Setup Bluetooth? [y/n]"
 read bluetooth
 if [[ "$bluetooth" -eq "y" ]]; then
    sudo pacman -S bluez bluez-utils dbus alsa-plugins pulseaudio pulseaudio-alsa
+   modprobe btusb
+
    sudo systemctl enable dbus
    sudo systemctl start dbus
    dbus-daemon --session --fork
