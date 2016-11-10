@@ -5,10 +5,6 @@
 # bluetooth: https://bbs.archlinux.org/viewtopic.php?id=166678&p=2
 # i3 open standard windows on every screen
 # add Fn keys to xbindkeysrc
-#add nfs mounting for NAS:
-#sudo pacman -S nfs-utils
-#systemctl start rpcbind
-#write: "systemctl start rpcbind" in fstab
 
 # Initialize pacman
 sudo cp ./etc/pacman.conf /etc
@@ -33,6 +29,7 @@ sudo pacman -S ttf-dejavu --noconfirm
 sudo pacman -S ntfs-3g --noconfirm
 sudo pacman -S xterm openssh biber i3lock i3status dmenu feh unzip unrar keepass scrot udisks2 udevil gvim --noconfirm
 yaourt -S vivaldi --noconfirm
+yaourt -S pepper-flash --noconfirm
 
 # Install optional packages
 sudo pacman -S alsa-utils
@@ -106,6 +103,24 @@ if [[ "$bluetooth" -eq "y" ]]; then
    dbus-daemon --session --fork
 
    sudo systemctl start bluetooth.service
+fi
+
+# TODO Fix Permission denied after mount (cause using sudo)
+# Setup NFS
+echo "Setup NFS and NAS? [y/n]"
+read nfs
+if [[ "$nfs" -eq "y" ]]; then
+   sudo pacman -S nfs-utils
+
+   systemctl start rpcbind
+   systemctl start nfs-client.target
+   systemctl start remote-fs.target
+   systemctl enable rpcbind
+   systemctl enable nfs-client.target
+   systemctl enable remote-fs.target
+
+   sudo echo "\# BigData" >> /etc/fstab
+   sudo echo "192.168.0.2:/volume1/Share      /mnt/BigData    nfs     noauto,x-systemd.automount,x-systemd.device-timeout=10,timeo=14,x-systemd.idle-timeout=1min     0 0" >> /etc/fstab
 fi
 
 # Setup Monitors
