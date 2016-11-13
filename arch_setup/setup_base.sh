@@ -3,6 +3,7 @@
 # TODO
 # i3 open standard windows on every screen
 # add Fn keys to xbindkeysrc
+# confirmation is broken :(
 
 # Initialize pacman
 sudo cp ./etc/pacman.conf /etc
