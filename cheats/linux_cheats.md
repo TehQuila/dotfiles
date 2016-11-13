@@ -29,6 +29,7 @@
 5. Configure Installation
 
 ## PC
+
 ### Preparations
 1. Download Arch Image
 2. Verify Checksum: `gpg --keyserver-options auto-key-retrieve --verify archlinux-<version>-dual.iso.sig`
@@ -40,7 +41,7 @@
 2. When using UEFI Motherboard check if booted in UEFI Mode: `ls /sys/firmware/efi/efivars`
 3. Set keyboard layout: `loadkeys de_CH-latin1`
 4. Set console font if certain chars not displayed correctly: `setfont lat9w-16`
-5. Connect to internet: `ip link set enp0s3 up`
+5. Connect to internet: `ip link set enp0s25 up`
 TODO: Wifi during installation?
 6. Update system clock: `timedatectl set-ntp true`
 7. Prepare the storage devices
@@ -82,14 +83,35 @@ TODO: Wifi during installation?
   * Create symlink `/etc/localtime` with `ln -s /usr/share/zoneinfo/<Zone/SubZone> /etc/localtime`
   * Adjust time skew: `hwclock --systohc --utc`
 6. Install Bootloader (GRUB)
-  * When installing to GPT/UEFI
-  * `pacman -S grub efibootmgr`
-  * grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
-  * When installing to MBR/BIOS
-  * `pacman -S grub`
-  * `grub-install --target=i386-pc /dev/sdx`
-  * If using Intel CPU, install `intel-ucode`
-  * `grub-mkconfig -o /boot/grub/grub.cfg`
+   * If using Intel CPU, install `intel-ucode`
+   * Dual Boot Where Windows is installed for UEFI with the following partitions:
+      * a partition of type ef00 EFI System and filesystem FAT32,
+      * a partition of type 0c01 Microsoft reserved, generally of size 128 MiB,
+      * a partition of type 0700 Microsoft basic data and of filesystem NTFS, which corresponds to C:\,
+      * potentially system recovery and backup partitions and/or secondary data partitions (corresponding often to D:\ and above).
+      * Mind that there is no need to create an additional EFI System Partition (ESP), since it already exists
+      1. Edit `/etc/grub.d/40_custom` and paste in
+      ```
+      if [ "${grub_platform}" == "efi" ]; then
+         menuentry "Microsoft Windows Vista/7/8/8.1 UEFI-GPT" {
+            insmod part_gpt
+            insmod fat
+            insmod search_fs_uuid
+            insmod chain
+            search --fs-uuid --set=root <hints_string> <fs_uuid>
+            chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+         }
+      fi
+      ```
+      2. Where <hints_string> is the output of: `grub-probe --target=hints_string $esp/EFI/Microsoft/Boot/bootmgfw.efi`
+      3. And <fs_uuid> is the output of: `grub-probe --target=fs_uuid $esp/EFI/Microsoft/Boot/bootmgfw.efi`
+   * When installing to GPT/UEFI
+      * `pacman -S grub efibootmgr`
+      * `grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub`
+   * When installing to MBR/BIOS
+      * `pacman -S grub`
+      * `grub-install --target=i386-pc /dev/sdx`
+   * Generate grub config (which is collection configs from /etc/grub.d: `grub-mkconfig -o /boot/grub/grub.cfg`
 7. Configure Network
   * `echo <hostname> > /etc/hostname`
   * Append hostname to `/etc/hosts`
@@ -111,7 +133,7 @@ TODO: Wifi during installation?
 5. Install git: `sudo pacman -S git`
 6. Initialize workspace:
    * `mkdir $HOME/workspace`
-   * `git clone git@github.com:TehQuila/dotfiles.git $HOME/workspace/dotfiles`
+   * `git clone https://github.com/TehQuila/dotfiles.git $HOME/workspace/dotfiles`
 8. Setup base system: `./$HOME/workspace/dotfiles/setup_base.sh`
 9. Relogin
 10. Activate base16 shell: `base16_default-dark`
