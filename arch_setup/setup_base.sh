@@ -27,8 +27,7 @@ sudo pacman -S bash-completion --noconfirm
 sudo pacman -S i3-wm --noconfirm
 sudo pacman -S ttf-dejavu --noconfirm
 sudo pacman -S ntfs-3g --noconfirm
-sudo pacman -S xterm openssh biber i3lock i3status dmenu feh unzip unrar keepass scrot udisks2 udevil gvim --noconfirm
-yaourt -S vivaldi --noconfirm
+sudo pacman -S xterm openssh biber i3lock i3status dmenu feh unzip unrar keepass scrot udisks2 udevil gvim firefox --noconfirm
 yaourt -S pepper-flash --noconfirm
 
 # Install optional packages
@@ -76,7 +75,6 @@ cp -r ./home/i3 $HOME/.i3
 cp ./home/fehbg $HOME/.fehbg
 cp ./home/vimrc $HOME/.vimrc
 cp ./home/toprc $HOME/.toprc
-cp -rf ./home/config/vivaldi/Default $HOME/.config/Default
 
 # Setup X11
 sudo cp ./etc/X11/xorg.conf.d/00-keyboard.conf /etc/X11/xorg.conf.d
