@@ -75,6 +75,7 @@ cp -r ./home/i3 $HOME/.i3
 cp ./home/fehbg $HOME/.fehbg
 cp ./home/vimrc $HOME/.vimrc
 cp ./home/toprc $HOME/.toprc
+cp -r ./home/mozilla $HOME/.mozilla
 
 # Setup X11
 sudo cp ./etc/X11/xorg.conf.d/00-keyboard.conf /etc/X11/xorg.conf.d
