@@ -1,8 +1,6 @@
 #!/usr/bin/bash
 
 # TODO
-# X11 scren turns black automatically
-# bluetooth: https://bbs.archlinux.org/viewtopic.php?id=166678&p=2
 # i3 open standard windows on every screen
 # add Fn keys to xbindkeysrc
 
@@ -90,6 +88,7 @@ if [[ "$laptop" -eq "y" ]]; then
    cp ./home/xbindkeysrc $HOME/.xbindkeysrc # bind keycodes
 fi
 
+# TODO bluetooth: https://bbs.archlinux.org/viewtopic.php?id=166678&p=2
 # Setup Bluetooth
 echo "Setup Bluetooth? [y/n]"
 read bluetooth
