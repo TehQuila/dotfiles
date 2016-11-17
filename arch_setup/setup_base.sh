@@ -162,9 +162,9 @@ if [[ "$monitors" == "y" ]]; then
       else
          echo "Screen ${screens[i]} right or left of primary? [LeftOf/RightOf]"
          read side
-         echo "Option \"$side\" \"${screens[primary]}\"" | sudo tee --append $monitor_config
+         echo "   Option \"$side\" \"${screens[primary]}\"" | sudo tee --append $monitor_config
       fi
-      echo "Option \"DPMS\" \"true\"" | sudo tee --append $monitor_config
+      echo "   Option \"DPMS\" \"true\"" | sudo tee --append $monitor_config
       echo "EndSection" | sudo tee --append $monitor_config
       echo "" | sudo tee --append $monitor_config
    done
