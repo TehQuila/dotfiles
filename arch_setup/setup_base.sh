@@ -138,6 +138,12 @@ else
    sudo pacman -S xf86-video-fbdev --noconfirm
 fi
 
+# TODO: use printf and A
+#{
+#     echo "something" >&3
+#       printf '%s\n' "first line" "$second line" >&3
+#         # ... etc ...
+#} 3>file
 read -n1 -p "Setup Monitors? [y/n] " monitors
 if [[ "$monitors" == "y" ]]; then
    monitor_config="/etc/X11/xorg.conf.d/20-monitors.conf"
