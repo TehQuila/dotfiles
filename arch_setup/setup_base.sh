@@ -31,10 +31,16 @@ yaourt -S pepper-flash --noconfirm
 
 # Install optional packages
 sudo pacman -S alsa-utils
-yaourt -S foldingathome
 
-echo "Setup LaTeX? [y/n]"
-read latex
+read -n1 -p "Setup Folding At Home? [y/n] " fah
+if [[ "$fah" == "y" ]]; then
+   yaourt -S foldingathome
+   /opt/fah/FAHClient --configure
+   systemctl start foldingathome.service
+   systemctl enable foldingathome.service
+fi
+
+read -n1 -p "Setup LaTeX? [y/n] " latex
 if [[ "$latex" -eq "y" ]]; then
    sudo pacman -S texlive-core --noconfirm
    sudo pacman -S texlive-bin --noconfirm
@@ -79,9 +85,9 @@ cp -r ./home/mozilla $HOME/.mozilla
 # Setup X11
 sudo cp ./etc/X11/xorg.conf.d/00-keyboard.conf /etc/X11/xorg.conf.d
 sudo cp ./etc/X11/xorg.conf.d/01-mouse.conf /etc/X11/xorg.conf.d
-echo "Setup Trackpoint/Touchpad/HW Button configs? [y/n]"
-read laptop
-if [[ "$laptop" -eq "y" ]]; then
+
+read -n1 -p "Setup Trackpoint/Touchpad/HW Button configs? [y/n] " laptop
+if [[ "$laptop" == "y" ]]; then
    sudo cp ./etc/X11/xorg.conf.d/10-trackpoint.conf /etc/X11/xorg.conf.d
    sudo cp ./etc/X11/xorg.conf.d/11-touchpad.conf /etc/X11/xorg.conf.d
    sudo pacman -S xorg-xmodmap xbindkeys --noconfirm
@@ -91,9 +97,8 @@ fi
 
 # TODO bluetooth: https://bbs.archlinux.org/viewtopic.php?id=166678&p=2
 # Setup Bluetooth
-echo "Setup Bluetooth? [y/n]"
-read bluetooth
-if [[ "$bluetooth" -eq "y" ]]; then
+read -n1 -p "Setup Bluetooth? [y/n] " bluetooth
+if [[ "$bluetooth" == "y" ]]; then
    sudo pacman -S bluez bluez-utils dbus alsa-plugins pulseaudio pulseaudio-alsa
    modprobe btusb
 
@@ -106,9 +111,8 @@ fi
 
 # TODO Fix Permission denied after mount (cause using sudo)
 # Setup NFS
-echo "Setup NFS and NAS? [y/n]"
-read nfs
-if [[ "$nfs" -eq "y" ]]; then
+read -n1 -p "Setup Bluetooth? [y/n] " nfs
+if [[ "$nfs" == "y" ]]; then
    sudo pacman -S nfs-utils
 
    systemctl start rpcbind
@@ -134,9 +138,8 @@ else
    sudo pacman -S xf86-video-fbdev --noconfirm
 fi
 
-echo "Setup Monitors? [y/n]"
-read monitors
-if [[ "$monitors" -eq "y" ]]; then
+read -n1 -p "Setup Monitors? [y/n] " monitors
+if [[ "$monitors" == "y" ]]; then
    monitor_config="/etc/X11/xorg.conf.d/20-monitors.conf"
    screens=()
    while read -r line; do
