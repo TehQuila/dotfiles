@@ -1,0 +1,10 @@
+<config>
+  <!-- User Information -->
+  <passkey v='d35d3f263c8851e4adee9da93a9630f7'/>
+  <team v='230686'/>
+  <user v='TehQuila'/>
+
+  <!-- Folding Slots -->
+  <slot id='0' type='CPU'/>
+  <slot id='1' type='GPU'/>
+</config>
