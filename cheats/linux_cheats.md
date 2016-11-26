@@ -1,5 +1,7 @@
-# Installing Arch Linux
+# Handy Commands
+Rerun the last command as sudo: `sudo !!`
 
+# Installing Arch Linux
 ## RaspberryPi
 1. Partition SD-Card
   * `fdisk /dev/mmcblk0`
@@ -29,7 +31,6 @@
 5. Configure Installation
 
 ## PC
-
 ### Preparations
 1. Download Arch Image
 2. Verify Checksum: `gpg --keyserver-options auto-key-retrieve --verify archlinux-<version>-dual.iso.sig`
@@ -280,7 +281,7 @@ cupsreject queue_name
 cupsdisable queue_nameA
 lpadmin -x queue_name
 
-##Get Hardware Information
+## Get Hardware Information
 lscpu - CPU Info
 /proc files, hwinfo, lshw - General HW Info
 lspci - PCI buses and connected devices info
@@ -313,7 +314,6 @@ If SD-Card cannot be accessed by fdisk due to input/output error, try overwritin
 9. Finally, use `connect <mac>` to establish a connection.
 
 ## Share Laptop WLAN through Ethernet
-
 ### On Laptop
 1. Static IP address
   * Activate Interface: `ip link set up enp0s25`
