@@ -2,8 +2,19 @@
 
 # TODO
 # i3 open standard windows on every screen
+
 # add Fn keys to xbindkeysrc
-# confirmation is broken :(
+
+# use printf and A
+#{
+#     echo "something" >&3
+#       printf '%s\n' "first line" "$second line" >&3
+#         # ... etc ...
+#} 3>file
+
+# Fix NFS Permission denied after mount (cause using sudo)
+
+# bluetooth: https://bbs.archlinux.org/viewtopic.php?id=166678&p=2
 
 # Initialize pacman
 sudo cp ./etc/pacman.conf /etc
@@ -95,7 +106,6 @@ if [[ "$laptop" == "y" ]]; then
    cp ./home/xbindkeysrc $HOME/.xbindkeysrc # bind keycodes
 fi
 
-# TODO bluetooth: https://bbs.archlinux.org/viewtopic.php?id=166678&p=2
 # Setup Bluetooth
 read -n1 -p "Setup Bluetooth? [y/n] " bluetooth
 if [[ "$bluetooth" == "y" ]]; then
@@ -109,7 +119,6 @@ if [[ "$bluetooth" == "y" ]]; then
    sudo systemctl start bluetooth.service
 fi
 
-# TODO Fix Permission denied after mount (cause using sudo)
 # Setup NFS
 read -n1 -p "Setup Bluetooth? [y/n] " nfs
 if [[ "$nfs" == "y" ]]; then
@@ -138,12 +147,6 @@ else
    sudo pacman -S xf86-video-fbdev --noconfirm
 fi
 
-# TODO: use printf and A
-#{
-#     echo "something" >&3
-#       printf '%s\n' "first line" "$second line" >&3
-#         # ... etc ...
-#} 3>file
 read -n1 -p "Setup Monitors? [y/n] " monitors
 if [[ "$monitors" == "y" ]]; then
    monitor_config="/etc/X11/xorg.conf.d/20-monitors.conf"
