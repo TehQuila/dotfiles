@@ -14,6 +14,9 @@ fi
 # set wallpaper
 eval $(cat $HOME/.fehbg)
 
+# execute xflux
+xflux -l 47.4 -g 8.5 -k 3000
+
 # execute window manager, make sure automount works
 feh --bg-scale "$HOME"'/.i3/wallpaper.png'
 exec bash -c 'devmon -g & i3'

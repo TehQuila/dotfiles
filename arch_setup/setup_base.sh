@@ -3,7 +3,6 @@
 # TODO
 # i3 open standard windows on every screen
 # add Fn keys to xbindkeysrc
-# confirmation is broken :(
 
 # Initialize pacman
 sudo cp ./etc/pacman.conf /etc
@@ -28,6 +27,7 @@ sudo pacman -S ttf-dejavu --noconfirm
 sudo pacman -S ntfs-3g --noconfirm
 sudo pacman -S xterm openssh biber i3lock i3status dmenu feh unzip unrar keepass scrot udisks2 udevil gvim firefox --noconfirm
 yaourt -S pepper-flash --noconfirm
+yaourt -S xflux --noconfirm
 
 # Install optional packages
 sudo pacman -S alsa-utils
