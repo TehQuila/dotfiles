@@ -3,13 +3,6 @@
 # TODO
 # i3 open standard windows on every screen
 # add Fn keys to xbindkeysrc
-# use printf and A
-#{
-#     echo "something" >&3
-#       printf '%s\n' "first line" "$second line" >&3
-#         # ... etc ...
-#} 3>file
-
 # Fix NFS Permission denied after mount (cause using sudo)
 
 # bluetooth: https://bbs.archlinux.org/viewtopic.php?id=166678&p=2
@@ -130,8 +123,10 @@ if [[ "$nfs" == "y" ]]; then
    systemctl enable nfs-client.target
    systemctl enable remote-fs.target
 
-   sudo echo "\# BigData" >> /etc/fstab
-   sudo echo "192.168.0.2:/volume1/Share      /mnt/BigData    nfs     noauto,x-systemd.automount,x-systemd.device-timeout=10,timeo=14,x-systemd.idle-timeout=1min     0 0" >> /etc/fstab
+   {
+      sudo echo "\# BigData" >&3
+      sudo echo "192.168.0.2:/volume1/Share      /mnt/BigData    nfs     noauto,x-systemd.automount,x-systemd.device-timeout=10,timeo=14,x-systemd.idle-timeout=1min     0 0" >&3
+   } 3>>/etc/fstab
 fi
 
 # Setup Monitors
