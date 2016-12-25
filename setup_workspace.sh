@@ -16,7 +16,6 @@ curl -sSL https://get.rvm.io | sudo bash -s stable
 sudo gpasswd -a $USER rvm
 cp ./home/rvmrc $HOME/.rvmrc
 
-
 sudo pacman -S python nodejs npm --noconfirm
 
 yaourt -S webstorm datagrip intellij-idea-ultimate-edition clion rubymine pycharm-professional android-studio android-tools --noconfirm
