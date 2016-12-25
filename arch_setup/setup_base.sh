@@ -3,7 +3,6 @@
 # TODO
 # i3 open standard windows on every screen
 # add Fn keys to xbindkeysrc
-# Fix NFS Permission denied after mount (cause using sudo)
 # bluetooth: https://bbs.archlinux.org/viewtopic.php?id=166678&p=2
 
 # Initialize pacman
@@ -110,21 +109,24 @@ if [[ "$bluetooth" == "y" ]]; then
    sudo systemctl start bluetooth.service
 fi
 
-# Setup NFS
-read -n1 -p "Setup Bluetooth? [y/n] " nfs
-if [[ "$nfs" == "y" ]]; then
-   sudo pacman -S nfs-utils
+# Setup NAS mount
+read -n1 -p "Setup NAS Share? [y/n] " nas
+if [[ "$nas" == "y" ]]; then
+   sudo pacman -S cifs-utils
 
-   systemctl start rpcbind
-   systemctl start nfs-client.target
-   systemctl start remote-fs.target
-   systemctl enable rpcbind
-   systemctl enable nfs-client.target
-   systemctl enable remote-fs.target
+   mkdir $HOME/.credentials
+   read -p "Enter NAS username: " user
+   read -p "Enter NAS password: " password
+   {
+      echo "username=${username}" >&3
+      echo "password=${password}" >&3
+   } 3>>$HOME/.credentials/BigData
+   sudo chmod 600 .credentials
 
+   sudo mkdir /mnt/BigData
    {
       sudo echo "\# BigData" >&3
-      sudo echo "192.168.0.2:/volume1/Share      /mnt/BigData    nfs     noauto,x-systemd.automount,x-systemd.device-timeout=10,timeo=14,x-systemd.idle-timeout=1min     0 0" >&3
+      sudo echo "//192.168.0.2/Share      /mnt/BigData    cifs     x-systemd.automount,iocharset=utf8     0 0" >&3
    } 3>>/etc/fstab
 fi
 
