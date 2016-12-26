@@ -3,8 +3,8 @@
 sudo pacman -S cifs-utils --noconfirm
 
 mkdir $HOME/.credentials
-read -p "Enter NAS username: " user
-read -p "Enter NAS password: " password
+read -p "Enter samba username: " username
+read -p "Enter samba password: " password
 {
    echo "username=${username}" >&3
    echo "password=${password}" >&3
