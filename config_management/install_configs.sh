@@ -15,10 +15,10 @@ cp ./home/bash_profile $HOME/.bash_profile
 cp ./home/xinitrc $HOME/.xinitrc
 cp ./home/Xresources $HOME/.Xresources
 cp ./home/bashrc $HOME/.bashrc
-cp -r ./home/i3 $HOME/.i3
+cp -r ./home/i3/* $HOME/.i3
 cp ./home/gitconfig $HOME/.gitconfig
 cp ./home/curlrc $HOME/.curlrc
 cp ./home/toprc $HOME/.toprc
 cp ./home/vimrc $HOME/.vimrc
 [[ -e $HOME/.rvmrc ]] && ./home/rvmrc cp $HOME/.rvmrc
-cp -r ./home/mozilla $HOME/.mozilla
+cp -r ./home/mozilla/* $HOME/.mozilla
