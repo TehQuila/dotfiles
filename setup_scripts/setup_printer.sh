@@ -1,8 +1,10 @@
+#!/usr/bin/bash
+
 sudo pacman -S cups avahi nss-mdns --noconfirm
-systemctl enable avahi-daemon.service
-systemctl enable org.cups.cupsd.service
-systemctl start avahi-daemon.service
-systemctl start org.cups.cupsd.service
+systemctl enable avahi-daemon
+systemctl enable org.cups.cupsd
+systemctl start avahi-daemon
+systemctl start org.cups.cupsd
 
 sudo lpinfo -v
 echo "Enter Printer name: "
