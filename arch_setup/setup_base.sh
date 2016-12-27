@@ -4,6 +4,7 @@
 # i3 open standard windows on every screen
 
 # add Fn keys to xbindkeysrc
+# add prt scrn key to xbindkey --> use scrot
 
 # use printf and A
 #{
