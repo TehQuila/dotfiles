@@ -1,16 +1,17 @@
-XTerm*termName: xterm-256color
-XTerm*selectToClipboard: true
-XTerm*SaveLines: 4096
-XTerm*VT100.cursorBlink: true
+*termName: xterm-256color
+*selectToClipboard: true
+*SaveLines: 4096
+*VT100.cursorBlink: true
 
 ! colored manpages
-XTerm*VT100.colorBDMode: true
-XTerm*VT100.colorBD: base08
-XTerm*VT100.colorULMode: true
-XTerm*VT100.colorUL: base0B
-XTerm*VT100.veryBoldColors: 6
+*VT100.colorBDMode: true
+*VT100.colorBD: base08
+*VT100.colorULMode: true
+*VT100.colorUL: base0B
+*VT100.veryBoldColors: 6
 
-*faceName: faceName: DejaVu Sans Mono
+! font
+*faceName: Inconsolata
 *faceSize: 10
 
 ! Base16 Default Dark
@@ -62,4 +63,3 @@ XTerm*VT100.veryBoldColors: 6
 *.color19:      base02
 *.color20:      base04
 *.color21:      base06
-
