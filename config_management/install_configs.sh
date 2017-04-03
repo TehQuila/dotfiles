@@ -24,5 +24,5 @@ cp $DIR/home/curlrc $HOME/.curlrc
 cp $DIR/home/toprc $HOME/.toprc
 cp $DIR/home/vimrc $HOME/.vimrc
 [[ -e $HOME/.rvmrc ]] && $DIR/home/rvmrc cp $HOME/.rvmrc
-mkdir -p $HOME/.mozilla/firefox
+[[ ! -d "$HOME/.mozilla/firefox" ]] && mkdir -p $HOME/.mozilla/firefox
 cp -r $DIR/home/mozilla/firefox/* $HOME/.mozilla/firefox
