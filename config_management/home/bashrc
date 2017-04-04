@@ -4,22 +4,26 @@
 export EDITOR='vim'
 export PATH="${PATH}:/bin/fastboot"
 export PATH="${PATH}:/usr/local/rvm/bin"
+export PATH="${PATH}:/bin/ruby"
 
+# start base16 theme
 BASE16_SHELL=$HOME/.config/base16-shell/
 [[ -n "$PS1" ]] && [[ -s $BASE16_SHELL/profile_helper.sh ]] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
+# start RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 [[ -r "$HOME/.rvm/scripts/completion" ]] && source "$HOME/.rvm/scripts/completion"
 
-export PATH=$PATH:/bin/ruby
 
 # enable sudo tab completion
 complete -cf sudo
 
+# enable vi controls
+set -o vi
+
 alias ls='ls --color=auto'
 alias grep='grep --color'
 
-set -o vi
 
 PS1='[\u@\h \W]\$ '
 

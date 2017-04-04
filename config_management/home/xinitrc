@@ -1,10 +1,14 @@
 # !/bin/sh
 
+# refresh .Xresources
 [[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources
 [[ -f $HOME/.Xmodmap ]] && xmodmap $HOME/.Xmodmap
 
 # enable custom keybindings configured in ~/.xbindkeysrc
 xbindkeys
+
+# start ssh-agent to make ~./ssh keys available
+eval $(ssh-agent)
 
 # start dbus-daemon to automount removable devices
 if test -z "$DBUS_SESSION_BUS_ADDRESS" ; then
