@@ -1,0 +1,4 @@
+IdentityFile ~/.ssh/gmail
+IdentityFile ~/.ssh/apgsga
+
+AddKeysToAgent ask
