@@ -18,6 +18,7 @@ cp $DIR/home/bash_profile $HOME/.bash_profile
 cp $DIR/home/xinitrc $HOME/.xinitrc
 cp $DIR/home/Xresources $HOME/.Xresources
 cp $DIR/home/bashrc $HOME/.bashrc
+cp $DIR/home/ssh/config $HOME/.ssh/
 cp -r $DIR/home/i3/* $HOME/.i3
 cp $DIR/home/gitconfig $HOME/.gitconfig
 cp $DIR/home/curlrc $HOME/.curlrc
