@@ -30,6 +30,8 @@ sudo pacman -S xterm i3lock i3status dmenu feh firefox openssh unzip unrar keepa
 yaourt -S pepper-flash --noconfirm
 yaourt -S xflux --noconfirm
 
+timedatectl set-ntp true
+
 source setup_scripts/setup_x11.sh
 source setup_scripts/setup_vim.sh
 
