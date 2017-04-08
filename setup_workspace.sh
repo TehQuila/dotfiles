@@ -1,8 +1,8 @@
 printf "Enter your github email: "
-read email
+read EMAIL
 
 firefox -new-window https://github.com/settings/keys
-ssh-keygen -t rsa -b 4096 -C $email
+ssh-keygen -t rsa -b 4096 -C $EMAIL
 cat $HOME/.ssh/id_rsa.pub
 
 read -n1 -r -p "Press any key to continue..." key
