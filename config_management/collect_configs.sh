@@ -27,7 +27,6 @@ cp $HOME/$FFDIR/profiles.ini $DIR/home/mozilla/firefox
 cp $HOME/$FFDIR/$PROFILEDIR/search.json.mozlz4 $DIR/home/mozilla/firefox/$PROFILEDIR
 cp $HOME/$FFDIR/$PROFILEDIR/permissions.sqlite $DIR/home/mozilla/firefox/$PROFILEDIR
 cp $HOME/$FFDIR/$PROFILEDIR/content-prefs.sqlite $DIR/home/mozilla/firefox/$PROFILEDIR
-cp $HOME/$FFDIR/$PROFILEDIR/cert8.db $DIR/home/mozilla/firefox/$PROFILEDIR
 cp $HOME/$FFDIR/$PROFILEDIR/mimeTypes.rdf $DIR/home/mozilla/firefox/$PROFILEDIR
 cp $HOME/$FFDIR/$PROFILEDIR/xulstore.json $DIR/home/mozilla/firefox/$PROFILEDIR
 cp $HOME/$FFDIR/$PROFILEDIR/prefs.js $DIR/home/mozilla/firefox/$PROFILEDIR
