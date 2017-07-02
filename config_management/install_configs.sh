@@ -12,7 +12,7 @@ sudo cp $DIR/etc/X11/xorg.conf.d/01-mouse.conf /etc/X11/xorg.conf.d
 [[ -e $HOME/.xbindkeysrc ]] && cp $DIR/home/xbindkeysrc $HOME/.xbindkeysrc
 
 mkdir $HOME/.config
-cp $DIR/config/user-dirs.dirs $HOME/.config
+cp $DIR/home/config/user-dirs.dirs $HOME/.config
 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 
 cp $DIR/home/bash_profile $HOME/.bash_profile
