@@ -9,6 +9,9 @@ cp /etc/X11/xorg.conf.d/01-mouse.conf $DIR/etc/X11/xorg.conf.d
 [[ -e /etc/X11/xorg.conf.d/10-trackpoint.conf ]] && cp /etc/X11/xorg.conf.d/10-trackpoint.conf $DIR/etc/X11/xorg.conf.d
 [[ -e /etc/X11/xorg.conf.d/11-touchpad.conf ]] && cp /etc/X11/xorg.conf.d/11-touchpad.conf $DIR/etc/X11/xorg.conf.d
 [[ -e $HOME/.xbindkeysrc ]] && cp $HOME/.xbindkeysrc $DIR/home/xbindkeysrc
+
+cp -r $HOME/.config/user-dirs.dirs $DIR/home/config
+
 cp $HOME/.bash_profile $DIR/home/bash_profile
 cp $HOME/.xinitrc $DIR/home/xinitrc
 cp $HOME/.Xresources $DIR/home/Xresources
