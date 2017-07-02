@@ -26,7 +26,7 @@ sudo pacman -S ntfs-3g --noconfirm
 sudo pacman -S alsa-utils --noconfirm
 sudo pacman -S i3-wm --noconfirm
 sudo pacman -S ttf-inconsolata --noconfirm
-sudo pacman -S xterm i3lock i3status dmenu feh firefox openssh unzip unrar keepass scrot udisks2 udevil --noconfirm
+sudo pacman -S wget xterm i3lock i3status dmenu feh firefox openssh unzip unrar keepass scrot udisks2 udevil openvpn --noconfirm
 yaourt -S pepper-flash --noconfirm
 yaourt -S xflux --noconfirm
 

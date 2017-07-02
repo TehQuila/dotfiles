@@ -12,7 +12,7 @@ read -n1 -p "Include laptop configs? [y/n] " laptop
 if [[ "$laptop" == "y" ]]; then
    sudo cp $DIR/etc/X11/xorg.conf.d/10-trackpoint.conf /etc/X11/xorg.conf.d
    sudo cp $DIR/etc/X11/xorg.conf.d/11-touchpad.conf /etc/X11/xorg.conf.d
-   [[ -e $HOME/.xbindkeysrc ]] && cp $DIR/home/xbindkeysrc $HOME/.xbindkeysrc
+   cp $DIR/home/xbindkeysrc $HOME/.xbindkeysrc
 fi
 
 [[ ! -d "$HOME/.config" ]] && mkdir $HOME/.config
@@ -25,6 +25,13 @@ cp $DIR/home/Xresources $HOME/.Xresources
 cp $DIR/home/bashrc $HOME/.bashrc
 
 cp $DIR/home/ssh/config $HOME/.ssh/
+if [[ ! -d "/etc/openvpn/nordvpn" ]]; then
+   sudo mkdir /etc/openvpn/nordvpn
+   sudo wget wget https://nordvpn.com/api/files/zip -P /etc/openvpn/nordvpn
+   sudo unzip /etc/openvpn/nordvpn/zip
+   sudo rm /etc/openvpn/nordvpn/zip
+fi
+
 cp -r $DIR/home/i3/* $HOME/.i3
 cp $DIR/home/gitconfig $HOME/.gitconfig
 cp $DIR/home/curlrc $HOME/.curlrc
