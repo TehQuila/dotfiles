@@ -9,6 +9,7 @@ cp /etc/X11/xorg.conf.d/01-mouse.conf $DIR/etc/X11/xorg.conf.d
 [[ -e /etc/X11/xorg.conf.d/10-trackpoint.conf ]] && cp /etc/X11/xorg.conf.d/10-trackpoint.conf $DIR/etc/X11/xorg.conf.d
 [[ -e /etc/X11/xorg.conf.d/11-touchpad.conf ]] && cp /etc/X11/xorg.conf.d/11-touchpad.conf $DIR/etc/X11/xorg.conf.d
 [[ -e $HOME/.xbindkeysrc ]] && cp $HOME/.xbindkeysrc $DIR/home/xbindkeysrc
+cp /etc/sysctl.d/idea.conf $DIR/etc/sysctl.d
 
 cp -r $HOME/.config/user-dirs.dirs $DIR/home/config
 

@@ -14,6 +14,7 @@ if [[ "$laptop" == "y" ]]; then
    sudo cp $DIR/etc/X11/xorg.conf.d/11-touchpad.conf /etc/X11/xorg.conf.d
    cp $DIR/home/xbindkeysrc $HOME/.xbindkeysrc
 fi
+sudo cp $DIR/etc/sysctl.d/idea.conf /etc/sysctl.d
 
 [[ ! -d "$HOME/.config" ]] && mkdir $HOME/.config
 cp $DIR/home/config/user-dirs.dirs $HOME/.config
