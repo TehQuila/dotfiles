@@ -5,3 +5,4 @@ sudo pacman -S texlive-core --noconfirm
 sudo pacman -S texlive-bin --noconfirm
 sudo pacman -S texlive-bibtexextra --noconfirm
 sudo pacman -S texlive-latexextra --noconfirm
+sudo pacman -S texlive-science --noconfirm
