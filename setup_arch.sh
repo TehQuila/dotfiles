@@ -7,6 +7,7 @@
 # bluetooth: https://bbs.archlinux.org/viewtopic.php?id=166678&p=2
 # printer
 # latex
+# replace xflux with redshift: https://wiki.archlinux.org/index.php/Redshift
 
 # Initialize pacman
 sudo cp ./etc/pacman.conf /etc
