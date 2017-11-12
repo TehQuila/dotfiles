@@ -21,6 +21,12 @@ Change: c
 Paste: p
 Indent: >
 
+## Search and Replace
+current file, globally, ask: :%s/<find>/<replace>/gc
+all files in tree: 
+* All tex-files in current/sub directories: `:arg **/*.tex`
+* S&R globally but ask:`:argdo %s/pattern/replace/ge | update`
+
 ### Directions
 #### What
 * Next word: w(ord), e(nd
@@ -47,4 +53,4 @@ Copy to system clipboard: " + y
 Insert in front on multiple lines: ctrl+v I
 Insert behind multiple lines: ctrl+v $ A
 
-S&R globally but ask: %s/foo/bar/gc
+ %s/foo/bar/gc
