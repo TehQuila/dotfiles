@@ -17,6 +17,8 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 
 # enable sudo tab completion
 complete -cf sudo
+# enable completion for kubectl
+source <(kubectl completion bash)
 
 # enable vi controls
 set -o vi
