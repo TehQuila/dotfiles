@@ -1,0 +1,12 @@
+# 
+# /etc/fstab: static file system information
+#
+# <file system>	<dir>	<type>	<options>	<dump>	<pass>
+# /dev/sda1
+UUID=99ce500a-31b5-4863-91f8-5b9de1dcf6fb	/         	ext4      	rw,relatime,data=ordered	0 1
+
+# /dev/sdc1
+UUID=D636-075B      	/boot     	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro	0 2
+
+# BigData
+//192.168.178.2/data	/mnt/bigdata	cifs     uid=tim,credentials=/home/tim/.credentials/bigdata,nofail,noauto,x-systemd.automount,x-systemd.requires=network-online.target,x-systemd.device-timeout=10,iocharset=utf8,vers=3.0	0 0

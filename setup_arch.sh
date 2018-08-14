@@ -24,7 +24,6 @@ git clone https://aur.archlinux.org/yaourt.git /tmp/yaourt
 # Install packages
 sudo pacman -S bash-completion --noconfirm
 sudo pacman -S ntfs-3g --noconfirm
-sudo pacman -S alsa-utils --noconfirm
 sudo pacman -S i3-wm --noconfirm
 sudo pacman -S ttf-inconsolata --noconfirm
 sudo pacman -S wget xterm i3lock i3status dmenu feh firefox openssh unzip unrar keepass scrot udisks2 udevil openvpn --noconfirm
@@ -41,12 +40,12 @@ if [[ "$nas" == "y" ]]; then
    source setup_scripts/setup_nas.sh
 fi
 
-read -n1 -p "Setup Bluetooth? [y/n] " bluetooth
-if [[ "$bluetooth" == "y" ]]; then
-   source setup_scripts/setup_bluetooth.sh
+read -n1 -p "Setup Sound? [y/n] " sound
+if [[ "$sound" == "y" ]]; then
+   source setup_scripts/setup_sound.sh
 fi
 
-read -n1 -p "Setup printer? [y/n] " printer
+read -n1 -p "Setup Printer? [y/n] " printer
 if [[ "$printer" == "y" ]]; then
    source setup_scripts/setup_printer.sh
 fi
