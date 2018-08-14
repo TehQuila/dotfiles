@@ -139,10 +139,7 @@ TODO: Wifi during installation?
 9. Relogin
 10. Activate base16 shell: `base16_default-dark`
 11. When setting up WLAN: `wifi-menu`
-12. Setup workspace: `./$HOME/workspace/dotfiles/setup_workspace.sh
-12. Install RVM:
-   * `rvm install ruby`
-   * `rvm --default use ruby`
+12. Setup workspace: `./$HOME/workspace/dotfiles/setup_workspace.sh`
 
 # Server Hardening
 ## Three principles
