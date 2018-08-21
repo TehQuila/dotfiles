@@ -41,6 +41,8 @@ else
    git -C ~/.config/base16-shell pull
 fi
 
+cp $DIR/home/config/redshift $HOME/.config/redshift.conf
+
 cp $DIR/home/bash_profile $HOME/.bash_profile
 cp $DIR/home/xinitrc $HOME/.xinitrc
 cp $DIR/home/Xresources $HOME/.Xresources

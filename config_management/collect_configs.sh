@@ -17,7 +17,7 @@ cp /etc/X11/xorg.conf.d/01-mouse.conf $DIR/etc/X11/xorg.conf.d
 
 cp /etc/sysctl.d/idea.conf $DIR/etc/sysctl.d
 
-cp -r $HOME/.config/ $DIR/home/config
+cp $HOME/.config/redshift.conf $DIR/home/config/redshift
 
 cp $HOME/.bash_profile $DIR/home/bash_profile
 cp $HOME/.xinitrc $DIR/home/xinitrc

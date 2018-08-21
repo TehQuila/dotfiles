@@ -5,6 +5,7 @@ export EDITOR='vim'
 export PATH="${PATH}:/bin/fastboot"
 export PATH="${PATH}:/usr/local/rvm/bin"
 export PATH="${PATH}:/bin/ruby"
+export GOPATH="$HOME/workspace/go"
 
 # start base16 theme
 BASE16_SHELL=$HOME/.config/base16-shell/
@@ -17,8 +18,6 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 
 # enable sudo tab completion
 complete -cf sudo
-# enable completion for kubectl
-source <(kubectl completion bash)
 
 # enable vi controls
 set -o vi
