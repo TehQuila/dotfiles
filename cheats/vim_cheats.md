@@ -1,6 +1,4 @@
 # VIM-Cheatsheet
-## ToDo
-:
 
 ## System
 <multiplier><action><direction>
@@ -21,6 +19,12 @@ Change: c
 Paste: p
 Indent: >
 
+## Split Windows
+Change vertical split to horizontal Ctrl+w + K
+Change horizontal to vertical Ctrl+w + H
+Change Height: Ctrl-w + and Ctrl-w -
+Change Width: Ctrl-w > and Ctrl-w < t
+
 ## Search and Replace
 current file, globally, ask: :%s/<find>/<replace>/gc
 all files in tree: 
@@ -29,7 +33,7 @@ all files in tree:
 
 ### Directions
 #### What
-* Next word: w(ord), e(nd
+* Next word: w(ord), e(nd)
 * Backwords: b
 * In Between: i (next or surrounding)
    * HTML Tag: cit

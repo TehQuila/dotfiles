@@ -7,16 +7,40 @@ cat $HOME/.ssh/id_rsa.pub
 
 read -n1 -r -p "Press any key to continue..." key
 
-git clone git@github.com:TehQuila/lettertemplate.git $HOME/workspace/lettertemplate
-git clone git@github.com:TehQuila/curriculumvitae.git $HOME/workspace/curriculumvitae
-git clone git@github.com:TehQuila/projecteuler.git $HOME/workspace/projecteuler
+read -n1 -p "Setup Ruby? [y/n] " ruby
+if [[ "$ruby" == "y" ]]; then
+   sudo pacman -S ruby --noconfirm
 
-sudo gpg2 --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-curl -sSL https://get.rvm.io | sudo bash -s stable
-sudo gpasswd -a $USER rvm
-cp ./home/rvmrc $HOME/.rvmrc
+   aurman -S rubymine --noconfirm
 
-sudo pacman -S python nodejs npm --noconfirm
+   sudo gpg2 --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+   curl -sSL https://get.rvm.io | sudo bash -s stable
+   sudo gpasswd -a $USER rvm
+   cp ./home/rvmrc $HOME/.rvmrc
+fi
 
-yaourt -S webstorm datagrip intellij-idea-ultimate-edition clion rubymine pycharm-professional android-studio android-tools --noconfirm
-sudo gpasswd -a $USER adbusers
+read -n1 -p "Setup Python? [y/n] " python
+if [[ "$python" == "y" ]]; then
+   sudo pacman -S python --noconfirm
+   aurman -S pycharm-professional --noconfirm
+fi
+
+read -n1 -p "Setup Go? [y/n] " go
+if [[ "$go" == "y" ]]; then
+   sudo pacman -S go --noconfirm
+   aurman -S goland --noconfirm
+fi
+
+read -n1 -p "Setup Angular? [y/n] " angular
+if [[ "$angular" == "y" ]]; then
+   sudo pacman -S nodejs npm --noconfirm
+   aurman -S angular-cli --noconfirm
+   aurman -S webstorm --noconfirm
+fi
+
+read -n1 -p "Setup Android? [y/n] " android
+if [[ "$android" == "y" ]]; then
+   aurman -S android-studio --noconfirm
+   aurman -S android-tools --noconfirm
+   sudo gpasswd -a $USER adbusers
+fi

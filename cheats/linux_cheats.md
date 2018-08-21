@@ -1,6 +1,18 @@
 # Handy Commands
 Rerun the last command as sudo: `sudo !!`
 
+# Arch Linux
+## Updating Yaourt
+Error message: "error while loading shared libraries: libalpm.so.10"
+`sudo pacman -Rn yaourt package-query`
+`sudo pacman -S fakeroot`
+`git clone https://aur.archlinux.org/package-query.git`
+`cd package-query`
+`makepkg -si`
+`git clone https://aur.archlinux.org/yaourt.git`
+`cd yaourt`
+`makepkg -si`
+
 # Installing Arch Linux
 ## RaspberryPi
 1. Partition SD-Card
@@ -43,7 +55,6 @@ Rerun the last command as sudo: `sudo !!`
 3. Set keyboard layout: `loadkeys de_CH-latin1`
 4. Set console font if certain chars not displayed correctly: `setfont lat9w-16`
 5. Connect to internet: `ip link set enp0s25 up`
-TODO: Wifi during installation?
 6. Update system clock: `timedatectl set-ntp true`
 7. Prepare the storage devices
   * Identify the devices with `lsblk`
@@ -60,7 +71,7 @@ TODO: Wifi during installation?
     3. Create boot partition
       * press n, p, ENTER, ENTER, +100M
       * leave whatever partition type is chosen
-  * Create all other partitions to liking (Swap, home, system)
+  * Create all other partitions to liking (swap, home, system)
   * Format partitions:
     1. System partitions: `mkfs.ext4 /dev/sdxy`
     2. Swap partitions: `mkswap /dev/sdxy` and `swapon /dev/sdxy`
@@ -133,16 +144,13 @@ TODO: Wifi during installation?
 4. Relogin as new user.
 5. Install git: `sudo pacman -S git`
 6. Initialize workspace:
-   * `mkdir $HOME/workspace`
-   * `git clone https://github.com/TehQuila/dotfiles.git $HOME/workspace/dotfiles`
-8. Setup base system: `./$HOME/workspace/dotfiles/setup_base.sh`
+   * `mkdir -p $HOME/workspace/private`
+   * `git clone https://github.com/TehQuila/dotfiles.git $HOME/workspace/private/dotfiles`
+8. Setup base system: `./$HOME/workspace/dotfiles/setup_arch.sh`
 9. Relogin
 10. Activate base16 shell: `base16_default-dark`
 11. When setting up WLAN: `wifi-menu`
-12. Setup workspace: `./$HOME/workspace/dotfiles/setup_workspace.sh
-12. Install RVM:
-   * `rvm install ruby`
-   * `rvm --default use ruby`
+12. Setup workspace: `./$HOME/workspace/private/dotfiles/setup_workspace.sh
 
 # Server Hardening
 ## Three principles
@@ -270,16 +278,11 @@ exit 0
 ```
 
 # Tips & Tricks
-## CUPS
-lpr <file> print a file
-lpq check the queue
-lprm remove last entry only
-lprm remove all entries
-
-### Remove a Printer
-cupsreject queue_name
-cupsdisable queue_nameA
-lpadmin -x queue_name
+## Offline pkg Install
+1. Get pgk paths: sudo pacman -Sp <pkgs> > pkg_list.txt
+2. Download packages: wget -P ./pkgs -i ./pkg_list.txt
+3. Move to USB Stick
+4. Install with pacman -U
 
 ## Get Hardware Information
 lscpu - CPU Info
