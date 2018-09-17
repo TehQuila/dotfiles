@@ -38,6 +38,10 @@ set si " Smart indent
 set shiftwidth=3
 set tabstop=3
 
+" Display tabs
+set list
+set listchars=tab:•\ ,trail:•,extends:»,precedes:«
+
 " Access colors present in 256 colorspace
 syntax on
 set background=dark
@@ -46,24 +50,20 @@ if filereadable(expand("~/.vimrc_background"))
    source ~/.vimrc_background
 endif
 
-" Display tabs
-set list
-set listchars=tab:•\ ,trail:•,extends:»,precedes:«
+" install/load plugins
+call plug#begin('~/.vim/plugged')
+Plug 'lervag/vimtex'
+Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'daviesjamie/vim-base16-lightline'
+call plug#end()
 
-" Enable pathogen autoload
-execute pathogen#infect()
+" vimtex
+let g:vimtex_view_method = 'mupdf'
 
-" Airline Config
+" lightline
 set laststatus=2
-set t_Co=256
-let g:airline#extensions#tabline#enabled = 1
-
-" Syntastic Config
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+set noshowmode
+let g:lightline = {'colorscheme': 'base16'}

@@ -195,3 +195,11 @@ bar {
         urgent_workspace   $white $red
     }
 }
+
+# execute on startup
+exec firefox
+# exec webstorm
+# exec goland
+# exec pycharm
+exec spotify
+exec xterm

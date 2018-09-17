@@ -15,8 +15,8 @@ if test -z "$DBUS_SESSION_BUS_ADDRESS" ; then
     eval `dbus-launch --sh-syntax --exit-with-session`
 fi
 
-# execute xflux
-xflux -l 47.4 -g 8.5 -k 3000
+# execute redshift
+redshift -l 47.22:8.33 &> /dev/null &
 
 # set wallpaper
 feh --bg-scale "$HOME"'/.i3/wallpaper.png'
