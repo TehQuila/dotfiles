@@ -12,6 +12,7 @@ read -p "Enter samba password: " password
 sudo chmod 600 .credentials
 
 sudo mkdir /mnt/bigdata
+# todo: execute as sudo
 {
    sudo echo "\# bigdata" >&3
    sudo echo "//192.168.178.2/data	/mnt/bigdata	cifs     uid=tim,credentials=/home/tim/.credentials/bigdata,nofail,noauto,x-systemd.automount,x-systemd.requires=network-online.target,x-systemd.device-timeout=10,iocharset=utf8,vers=3.0	0 0" >&3

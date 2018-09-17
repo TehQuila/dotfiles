@@ -22,6 +22,7 @@ sudo pacman -S pepper-flash --noconfirm
 sudo pacman -S wget xterm i3lock i3status dmenu feh firefox openssh unzip unrar keepass scrot udisks2 udevil openvpn --noconfirm
 aurman -S redshift-minimal --noconfirm
 
+# todo: relative path for executing scripts --> change instructions to cd
 echo "Setting up X11..."
 source setup_scripts/setup_x11.sh
 echo "Setting up VIM..."
