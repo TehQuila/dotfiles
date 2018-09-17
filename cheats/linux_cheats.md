@@ -44,7 +44,7 @@ Error message: "error while loading shared libraries: libalpm.so.10"
 
 ## PC
 ### Preparations
-1. Download Arch Image
+1. Download [Arch Image](https://www.archlinux.org/download/)
 2. Verify Checksum: `gpg --keyserver-options auto-key-retrieve --verify archlinux-<version>-dual.iso.sig`
 3. Identify USB Stick with `lsblk`
 4. Flash image onto USB Stick: `dd bs=4M if=/path/to/archlinux.iso of=/dev/sdx status=progress && sync`
@@ -52,7 +52,7 @@ Error message: "error while loading shared libraries: libalpm.so.10"
 ### Installation
 1. Boot Image
 2. When using UEFI Motherboard check if booted in UEFI Mode: `ls /sys/firmware/efi/efivars`
-3. Set keyboard layout: `loadkeys de_CH-latin1`
+3. Set keyboard layout: `loadkeys de_CH-latin1` (to see all use `ls /usr/share/kbd/keymaps/**/*.map.gz`)
 4. Set console font if certain chars not displayed correctly: `setfont lat9w-16`
 5. Connect to internet: `ip link set enp0s25 up`
 6. Update system clock: `timedatectl set-ntp true`
@@ -146,7 +146,7 @@ Error message: "error while loading shared libraries: libalpm.so.10"
 6. Initialize workspace:
    * `mkdir -p $HOME/workspace/private`
    * `git clone https://github.com/TehQuila/dotfiles.git $HOME/workspace/private/dotfiles`
-8. Setup base system: `./$HOME/workspace/dotfiles/setup_arch.sh`
+8. Setup base system: `cd workspace/dotfiles && ./setup_arch.sh`
 9. Relogin
 10. Activate base16 shell: `base16_default-dark`
 11. When setting up WLAN: `wifi-menu`
